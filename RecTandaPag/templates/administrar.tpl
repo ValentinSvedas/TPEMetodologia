@@ -32,7 +32,7 @@
               {/foreach}
                 </tbody>
               </table>
-              <a href="añadirC.html" class="btn btn-success">Añadir Cartonero</a>
+              <a href="añadirC" class="btn btn-success">Añadir Cartonero</a>
         </div>
     </div>
     

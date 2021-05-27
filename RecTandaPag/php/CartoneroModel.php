@@ -11,6 +11,7 @@ class CartoneroModel{
     function AddCartonero($dni,$nombre,$apellido,$direccion,$fecha_nacimiento,$tipo_volumen){
         $sentencia = $this->db->prepare("INSERT INTO cartonero(dni,nombre,apellido,direccion,fecha_nacimiento,tipo_volumen) VALUES(?,?,?,?,?,?)");
         $sentencia->execute(array($dni,$nombre,$apellido,$direccion,$fecha_nacimiento,$tipo_volumen));
+        
     }
 
     function DeleteCartonero($dni){
