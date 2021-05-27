@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Oferta_Transporte(
 
 CREATE TABLE IF NOT EXISTS Pedido(
     id_ciudadano int not null,
-    id_pedido int not null,
+    id_pedido int not null AUTO_INCREMENT,
     franja_horaria_inicio date not null,
     franja_horaria_fin date not null,
     tipo_volumen char(1) not null,
@@ -43,7 +43,7 @@ CREATE TABLE Volumen(
 );
 
 CREATE TABLE IF NOT EXISTS Materiales(
-  id_material AUTO_INCREMENT not null,
+  id_material int not null AUTO_INCREMENT,
   nombre varchar(20) not null,
   CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_material)
 );
