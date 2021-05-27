@@ -43,6 +43,11 @@ class administrar{
         $smarty->assign('cartonero', $cartonero);
         $smarty->display('templates/detalleC.tpl');
     }
+    function ShowEditCartonero($cartonero){
+        $smarty = new Smarty();
+        $smarty->assign('cartonero', $cartonero);
+        $smarty->display('templates/editarC.tpl');
+    }
 
     function getCartoneros(){
         $cartoneros= $this->model->GetCartoneros();
@@ -57,8 +62,24 @@ class administrar{
     function deleteCartonero($params = null){
         $dni = $params[':ID'];
         $cartonero= $this->model->DeleteCartonero($dni);
-        $this->Showadministrar($cartoneros);    }
+        $this->Showadministrar($cartoneros);    
+    }
 
+    function EditCartonero($params = null){
+        $dni = $params[':ID'];
+        $cartonero = $this->model->GetCartonero($dni);
+         $this->ShowEditCartonero($cartonero);
+    }
+
+    function Edit(){
+        $this->model->updateCartonero($_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_fecha_nacimiento'],$_POST['input_dni'],$_POST['input_direccion'],$_POST['input_tipo']);
+        $this->ShowAdminLocation();
+    }
+
+
+    function ShowAdminLocation(){
+        header("Location: ".BASE_URL."administrar");
+     }
 
 
 }

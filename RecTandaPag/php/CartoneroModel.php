@@ -19,9 +19,9 @@ class CartoneroModel{
     }
     
 
-    function UpdateCartonero($dni,$nombre,$apellido,$direccion,$fecha_nacimiento,$tipo_volumen){
-        $sentencia = $this->db->prepare("UPDATE cartonero SET (nombre = $nombre,apellido = $apellido,direccion = $direccion,fecha_nacimiento = $fecha_nacimiento,tipo_volumen = $tipo_volumen) WHERE dni=$dni");
-        $sentencia->execute();
+    function UpdateCartonero($nombre,$apellido,$fecha_nacimiento,$dni,$direccion,$tipo_volumen){
+        $sentencia = $this->db->prepare("UPDATE cartonero SET nombre = '$nombre',apellido = '$apellido',direccion = '$direccion',fecha_nacimiento = '$fecha_nacimiento',tipo_volumen = '$tipo_volumen' WHERE dni=?");
+        $sentencia->execute(array($dni));
     }
     function GetCartoneros(){
         $query = $this->db->prepare("SELECT * FROM cartonero");

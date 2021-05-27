@@ -8,38 +8,42 @@
             <h2 class="p-3">Editar cartonero:</h2>
 
             <div class="contentForm">
-                <form>
+                <form action="editcartonero" method="post">
                     <div class="row">
                       <div class="col">
                         <p>Nombre:</p>
-                        <input type="text" class="form-control" placeholder="Juan">
+                        <input type="text"  name="input_nombre" class="form-control" value="{$cartonero->nombre}">
                       </div>
                       
                       <div class="col">
                         <p>Apellido:</p>
-                        <input type="text" class="form-control" placeholder="Fernandez">
+                        <input type="text" name="input_apellido" class="form-control" value="{$cartonero->apellido}" >
                       </div>
                     </div>
                     <div class="row p-1">
                         <div class="col ">
                             <p>Fecha de nacimiento:</p>
-                            <input type="datetime-local" class="form-control">
+                            <input type="date" name="input_fecha_nacimiento" class="form-control" value="{$cartonero->fecha_nacimiento}">
                           </div>
                           <div class="col">
                               <p>DNI:</p>
-                              <input type="text" class="form-control" placeholder="33019317">
+                              <input type="text" name="input_dni" class="form-control" value="{$cartonero->dni}">
                           </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <p>Vehículo:</p>
-                            <input type="text" class="form-control" placeholder="Camión">
+                            <input type="text" name="input_vehículo" class="form-control" placeholder="Camión">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col ">
                             <p>Dirección:</p>
-                            <input type="text" class="form-control" placeholder="almafuerte 1230">
+                            <input type="text" name="input_direccion" class="form-control" value="{$cartonero->direccion}">
+                          </div>
+                          <div class="col ">
+                            <p>Tipo:</p>
+                            <input type="text" name="input_tipo" class="form-control" value="{$cartonero->tipo_volumen}">
                           </div>
                     </div>
                     <div class="d-flex flex-row-reverse">
