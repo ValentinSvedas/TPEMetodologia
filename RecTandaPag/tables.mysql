@@ -1,0 +1,79 @@
+CREATE TABLE IF NOT EXISTS Cartonero (
+    dni int not null,
+    nombre varchar(20) not null,
+    apellido varchar(20) not null,
+    direccion varchar(20) not null,
+    fecha_nacimiento date not null,
+    tipo_volumen char(1) not null,
+    CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (dni)
+);
+
+CREATE TABLE IF NOT EXISTS Ciudadano (
+    id_ciudadano int not null,
+    nombre varchar(20) not null,
+    apellido varchar(20) not null,
+    direccion varchar(20) not null,
+    telefono int not null,
+    CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_ciudadano)
+);
+
+CREATE TABLE IF NOT EXISTS Oferta_Transporte(
+    id_oferta_transporte int not null,
+    id_ciudadano int not null,
+    tipo_volumen char(1) not null,
+    mail varchar(30) not null,
+    texto_libre varchar(100) not null,
+    CONSTRAINT PK_OFERTAS_TRANSPORTE PRIMARY KEY (id_oferta_transporte,id_ciudadano,tipo_volumen)
+);
+
+CREATE TABLE IF NOT EXISTS Pedido(
+    id_ciudadano int not null,
+    id_pedido int not null,
+    franja_horaria_inicio date not null,
+    franja_horaria_fin date not null,
+    tipo_volumen char(1) not null,
+    imagen_materiales varchar(50) null,
+    CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_ciudadano,id_pedido)
+);
+
+CREATE TABLE Volumen(
+    id_volumen char(1) not null,
+    tamaño varchar(20) not null,
+    CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_volumen)
+);
+
+CREATE TABLE IF NOT EXISTS Materiales(
+  id_material AUTO_INCREMENT not null,
+  nombre varchar(20) not null,
+  CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_material)
+);
+
+ALTER TABLE Pedido ADD CONSTRAINT FK_PEDIDO_VOLUMEN
+    FOREIGN KEY (tipo_volumen)
+    REFERENCES Volumen(id_volumen);
+
+ALTER TABLE Oferta_Transporte ADD CONSTRAINT FK_CIUDADANO_OT
+    FOREIGN KEY (id_ciudadano)
+    REFERENCES Ciudadano(id_ciudadano);
+
+ALTER TABLE Oferta_Transporte ADD CONSTRAINT FK_VOLUMEN_OT
+    FOREIGN KEY (tipo_volumen)
+    REFERENCES Volumen(id_volumen);
+
+ALTER TABLE Cartonero ADD CONSTRAINT FK_CARTOENRO_VOLUMEN
+    FOREIGN KEY (tipo_volumen)
+    REFERENCES Volumen(id_volumen);
+
+-- Materiales iniciales de la cooperativa
+INSERT INTO Materiales(nombre) VALUES ('papel');
+INSERT INTO Materiales(nombre) VALUES ('cartón');
+INSERT INTO Materiales(nombre) VALUES ('envases plásticos');
+INSERT INTO Materiales(nombre) VALUES ('latas de conserva');
+INSERT INTO Materiales(nombre) VALUES ('tetrabrik');
+INSERT INTO Materiales(nombre) VALUES ('envases de aluminio');
+INSERT INTO Materiales(nombre) VALUES ('botellas de vidrio');
+
+INSERT INTO Volumen(id_volumen, tamaño) VALUES ('A','En una caja');
+INSERT INTO Volumen(id_volumen, tamaño) VALUES ('B','En un auto');
+INSERT INTO Volumen(id_volumen, tamaño) VALUES ('C','En una camioneta');
+INSERT INTO Volumen(id_volumen, tamaño) VALUES ('D','En un camion');
