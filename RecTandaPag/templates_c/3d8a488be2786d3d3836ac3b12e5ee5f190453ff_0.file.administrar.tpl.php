@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-05-27 18:21:23
+/* Smarty version 3.1.34-dev-7, created on 2021-05-27 18:35:35
   from 'C:\xampp\htdocs\RecTandaPag\templates\administrar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_60afc703476174_71315181',
+  'unifunc' => 'content_60afca57bf0260_68124387',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3d8a488be2786d3d3836ac3b12e5ee5f190453ff' => 
     array (
       0 => 'C:\\xampp\\htdocs\\RecTandaPag\\templates\\administrar.tpl',
-      1 => 1622132480,
+      1 => 1622133327,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_60afc703476174_71315181 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60afca57bf0260_68124387 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <body>
@@ -52,7 +52,8 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['cartonero']->val
 $_smarty_tpl->tpl_vars['cartonero']->do_else = false;
 ?>
               <tr>
-                <td><a href="detalleC"><?php echo $_smarty_tpl->tpl_vars['cartonero']->value->nombre;?>
+                <td><a href="detalleC/<?php echo $_smarty_tpl->tpl_vars['cartonero']->value->dni;?>
+"><?php echo $_smarty_tpl->tpl_vars['cartonero']->value->nombre;?>
 </a></td>
                 <td><?php echo $_smarty_tpl->tpl_vars['cartonero']->value->apellido;?>
 </td>

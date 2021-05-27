@@ -38,11 +38,26 @@ class administrar{
         $smarty->assign('cartoneros', $cartoneros);
         $smarty->display('templates/administrar.tpl');
     }
+    function ShowDetailCartonero($cartonero){
+        $smarty = new Smarty();
+        $smarty->assign('cartonero', $cartonero);
+        $smarty->display('templates/detalleC.tpl');
+    }
 
     function getCartoneros(){
         $cartoneros= $this->model->GetCartoneros();
         $this->Showadministrar($cartoneros);
     }
+    function getCartonero($params = null){
+        $dni = $params[':ID'];
+        $cartonero= $this->model->GetCartonero($dni);
+        $this->ShowDetailCartonero($cartonero);
+    }
+
+    function deleteCartonero($params = null){
+        $dni = $params[':ID'];
+        $cartonero= $this->model->DeleteCartonero($dni);
+        $this->Showadministrar($cartoneros);    }
 
 
 

@@ -13,6 +13,8 @@
     $r->addRoute("advice", "GET", "administrar", "ShowAdvice");
     $r->addRoute("reciclar", "GET", "administrar", "ShowReciclar");
     $r->addRoute("administrar", "GET", "administrar", "getCartoneros");
+    $r->addRoute("detalleC/:ID", "GET", "administrar", "getCartonero");
+    $r->addRoute("delete/:ID", "GET", "administrar", "deleteCartonero");
 
     $r->addRoute("indexAdmin", "POST", "administrar", "ShowLoginAdmin");
     

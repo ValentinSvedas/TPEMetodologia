@@ -17,6 +17,7 @@ class CartoneroModel{
         $sentencia = $this->db->prepare("DELETE FROM cartonero WHERE dni=?");
         $sentencia->execute(array($dni));
     }
+    
 
     function UpdateCartonero($dni,$nombre,$apellido,$direccion,$fecha_nacimiento,$tipo_volumen){
         $sentencia = $this->db->prepare("UPDATE cartonero SET (nombre = $nombre,apellido = $apellido,direccion = $direccion,fecha_nacimiento = $fecha_nacimiento,tipo_volumen = $tipo_volumen) WHERE dni=$dni");
@@ -28,12 +29,12 @@ class CartoneroModel{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    
     function GetCartonero($dni){
-        $sentencia = $this->db->prepare("SELECT FROM cartonero WHERE dni=?");
+        $sentencia = $this->db->prepare("SELECT * FROM cartonero WHERE dni=?");
         $sentencia->execute(array($dni));
-        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+
 
 }
 

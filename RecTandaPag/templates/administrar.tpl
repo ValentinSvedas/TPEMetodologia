@@ -21,7 +21,7 @@
                 <tbody>
                  {foreach from=$cartoneros item=cartonero}
               <tr>
-                <td><a href="detalleC">{$cartonero->nombre}</a></td>
+                <td><a href="detalleC/{$cartonero->dni}">{$cartonero->nombre}</a></td>
                 <td>{$cartonero->apellido}</td>
                 <td>{$cartonero->direccion}</td>
                 <td>
