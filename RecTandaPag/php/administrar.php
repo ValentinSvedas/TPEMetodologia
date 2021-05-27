@@ -1,7 +1,7 @@
 <?php
 
 require_once "./libs/smarty/Smarty.class.php";
-require_once "db.php";
+require_once "CartoneroModel.php";
 
 class administrar{
     
@@ -9,8 +9,8 @@ class administrar{
     private $model;
 
     function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_recolector;charset=utf8', 'root', '');
-        $this->model = new dbModel();
+        $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
+        $this->model = new CartoneroModel();
     }
     function Home(){
         $smarty = new Smarty();
@@ -33,9 +33,15 @@ class administrar{
         $smarty = new Smarty();
         $smarty->display('templates/reciclar.tpl');
     }
-    function Showadministrar(){
+    function Showadministrar($cartoneros){
         $smarty = new Smarty();
+        $smarty->assign('cartoneros', $cartoneros);
         $smarty->display('templates/administrar.tpl');
+    }
+
+    function getCartoneros(){
+        $cartoneros= $this->model->GetCartoneros();
+        $this->Showadministrar($cartoneros);
     }
 
 

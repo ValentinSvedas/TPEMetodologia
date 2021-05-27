@@ -12,7 +12,7 @@
     $r->addRoute("login", "GET", "administrar", "showLogin");
     $r->addRoute("advice", "GET", "administrar", "ShowAdvice");
     $r->addRoute("reciclar", "GET", "administrar", "ShowReciclar");
-    $r->addRoute("administrar", "GET", "administrar", "Showadministrar");
+    $r->addRoute("administrar", "GET", "administrar", "getCartoneros");
 
     $r->addRoute("indexAdmin", "POST", "administrar", "ShowLoginAdmin");
     

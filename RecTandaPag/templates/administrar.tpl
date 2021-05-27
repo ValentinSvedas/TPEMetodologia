@@ -19,42 +19,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th><a href="detalleC.html">Juan</a></th>
-                    <td>200</td>
-                    <td>25%</td>
-                    <td>
-                        <a href="administrar.html" class="btn btn-danger">Eliminar</a>
-                        <a href="editarC.html" class="btn btn-info">Editar</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th><a href="detalleC.html">Pedro</a></th>
-                    <td>200</td>
-                    <td>25%</td>
-                    <td>
-                        <a href="administrar.html" class="btn btn-danger">Eliminar</a>
-                        <a href="editarC.html" class="btn btn-info">Editar</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th><a href="detalleC.html">Jorge</a></th>
-                    <td>200</td>
-                    <td>25%</td>
-                    <td>
-                        <a href="administrar.html" class="btn btn-danger">Eliminar</a>
-                        <a href="editarC.html" class="btn btn-info">Editar</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th><a href="detalleC.html">Eduardo</a></th>
-                    <td>200</td>
-                    <td>25%</td>
-                    <td>
-                        <a href="administrar.html" class="btn btn-danger">Eliminar</a>
-                        <a href="editarC.html" class="btn btn-info">Editar</a>
-                    </td>
-                  </tr>
+                 {foreach from=$cartoneros item=cartonero}
+              <tr>
+                <td><a href="detalleC">{$cartonero->nombre}</a></td>
+                <td>{$cartonero->apellido}</td>
+                <td>{$cartonero->direccion}</td>
+                <td>
+                </span><button type="button" class="btn btn-outline-danger"><a href="delete/{$cartonero->dni}">Borrar</a></button>
+                <button type="button" class="btn btn-outline-info"><a href="editar/{$cartonero->dni}">Editar</a></button></td>
+                </td>
+              </tr>
+              {/foreach}
                 </tbody>
               </table>
               <a href="añadirC.html" class="btn btn-success">Añadir Cartonero</a>
