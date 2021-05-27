@@ -22,8 +22,8 @@
                  {foreach from=$cartoneros item=cartonero}
               <tr>
                 <td><a href="detalleC/{$cartonero->dni}">{$cartonero->nombre}</a></td>
-                <td>{$cartonero->apellido}</td>
-                <td>{$cartonero->direccion}</td>
+                <td>0</td>
+                <td>0</td>
                 <td>
                 </span><button type="button" class="btn btn-outline-danger"><a href="delete/{$cartonero->dni}">Borrar</a></button>
                 <button type="button" class="btn btn-outline-info"><a href="editar/{$cartonero->dni}">Editar</a></button></td>
