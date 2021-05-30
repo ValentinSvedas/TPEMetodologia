@@ -1,10 +1,12 @@
+USE bd_recolector;
+
 CREATE TABLE IF NOT EXISTS Cartonero (
     dni int not null,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
     direccion varchar(20) not null,
     fecha_nacimiento date not null,
-    tipo_volumen char(1) not null,
+    tipo_volumen CHAR(1) not null,
     CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (dni)
 );
 
@@ -20,26 +22,31 @@ CREATE TABLE IF NOT EXISTS Ciudadano (
 CREATE TABLE IF NOT EXISTS Oferta_Transporte(
     id_oferta_transporte int not null,
     id_ciudadano int not null,
-    tipo_volumen char(1) not null,
+    tipo_volumen CHAR(1) not null,
     mail varchar(30) not null,
     texto_libre varchar(100) not null,
-    CONSTRAINT PK_OFERTAS_TRANSPORTE PRIMARY KEY (id_oferta_transporte,id_ciudadano,tipo_volumen)
+    CONSTRAINT PK_OFERTAS_TRANSPORTE PRIMARY KEY (id_oferta_transporte)
 );
 
 CREATE TABLE IF NOT EXISTS Pedido(
     id_ciudadano int not null,
     id_pedido int not null AUTO_INCREMENT,
-    franja_horaria_inicio date not null,
-    franja_horaria_fin date not null,
-    tipo_volumen char(1) not null,
+    tipo_franja_horaria int not null,
+    tipo_volumen CHAR(1) not null,
     imagen_materiales varchar(50) null,
-    CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_ciudadano,id_pedido)
+    CONSTRAINT PK_PEDIDO PRIMARY KEY (id_pedido)
 );
 
-CREATE TABLE Volumen(
-    id_volumen char(1) not null,
+CREATE TABLE IF NOT EXISTS Horario(
+    id_horario int not null,
+    franja_horario varchar(20) not null,
+    CONSTRAINT PK_HORARIO PRIMARY KEY (id_horario)
+);
+
+CREATE TABLE IF NOT EXISTS Volumen(
+    id_volumen CHAR(1) not null,
     tamaño varchar(20) not null,
-    CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_volumen)
+    CONSTRAINT PK_VOLUMEN PRIMARY KEY (id_volumen)
 );
 
 CREATE TABLE IF NOT EXISTS Materiales(
@@ -48,19 +55,33 @@ CREATE TABLE IF NOT EXISTS Materiales(
   CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_material)
 );
 
+ALTER TABLE Pedido DROP FOREIGN KEY IF EXISTS FK_PEDIDO_VOLUMEN;
 ALTER TABLE Pedido ADD CONSTRAINT FK_PEDIDO_VOLUMEN
     FOREIGN KEY (tipo_volumen)
     REFERENCES Volumen(id_volumen);
 
+ALTER TABLE Pedido DROP FOREIGN KEY IF EXISTS FK_PEDIDO_HORARIO;
+ALTER TABLE Pedido ADD CONSTRAINT FK_PEDIDO_HORARIO
+    FOREIGN KEY (tipo_franja_horaria)
+    REFERENCES Horario(id_horario);
+
+ALTER TABLE Pedido DROP FOREIGN KEY IF EXISTS FK_PEDIDO_CIUDADANO;
+ALTER TABLE Pedido ADD CONSTRAINT FK_PEDIDO_CIUDADANO
+    FOREIGN KEY (id_ciudadano)
+    REFERENCES Ciudadano(id_ciudadano);
+
+ALTER TABLE Oferta_Transporte DROP FOREIGN KEY IF EXISTS FK_CIUDADANO_OT;
 ALTER TABLE Oferta_Transporte ADD CONSTRAINT FK_CIUDADANO_OT
     FOREIGN KEY (id_ciudadano)
     REFERENCES Ciudadano(id_ciudadano);
 
+ALTER TABLE Oferta_Transporte DROP FOREIGN KEY IF EXISTS FK_VOLUMEN_OT;
 ALTER TABLE Oferta_Transporte ADD CONSTRAINT FK_VOLUMEN_OT
     FOREIGN KEY (tipo_volumen)
     REFERENCES Volumen(id_volumen);
 
-ALTER TABLE Cartonero ADD CONSTRAINT FK_CARTOENRO_VOLUMEN
+ALTER TABLE Cartonero DROP FOREIGN KEY IF EXISTS FK_CARTONERO_VOLUMEN;
+ALTER TABLE Cartonero ADD CONSTRAINT FK_CARTONERO_VOLUMEN
     FOREIGN KEY (tipo_volumen)
     REFERENCES Volumen(id_volumen);
 
@@ -73,7 +94,13 @@ INSERT INTO Materiales(nombre) VALUES ('tetrabrik');
 INSERT INTO Materiales(nombre) VALUES ('envases de aluminio');
 INSERT INTO Materiales(nombre) VALUES ('botellas de vidrio');
 
+-- Tipos de espacio para el transporte
 INSERT INTO Volumen(id_volumen, tamaño) VALUES ('A','En una caja');
 INSERT INTO Volumen(id_volumen, tamaño) VALUES ('B','En un auto');
 INSERT INTO Volumen(id_volumen, tamaño) VALUES ('C','En una camioneta');
 INSERT INTO Volumen(id_volumen, tamaño) VALUES ('D','En un camion');
+
+-- Franjas Horarias
+
+INSERT INTO Horario(id_horario,franja_horario) VALUES(1,"9 a 12");
+INSERT INTO Horario(id_horario,franja_horario) VALUES(2,"13 a 17");
