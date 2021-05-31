@@ -19,7 +19,7 @@
     $r->addRoute("delete/:ID", "GET", "administrar", "deleteCartonero");
     $r->addRoute("editar/:ID", "GET", "administrar", "EditCartonero");
     $r->addRoute("editar/editcartonero", "POST", "administrar", "Edit");
-    $r->addRoute("añadircartonero", "POST", "administrar", "addCartonero");
+    $r->addRoute("agregarCartonero", "POST", "administrar", "addCartonero");
     $r->addRoute("advice", "POST", "PedidoController", "addPedido");
 
 

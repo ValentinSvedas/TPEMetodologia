@@ -80,10 +80,11 @@ class administrar{
     function EditCartonero($params = null){
         $dni = $params[':ID'];
         $cartonero = $this->model->GetCartonero($dni);
-         $this->ShowEditCartonero($cartonero);
+        $this->ShowEditCartonero($cartonero);
     }
     function addCartonero(){
-        $this->model->AddCartonero($_POST['input_dni'],$_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_direccion'],$_POST['input_fecha_nacimiento'],$_POST['input_tipo']);
+        // var_dump($_POST);
+        $this->model->AddCartonero($_POST['input_dni'],$_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_direccion'],$_POST['input_fecha_nacimiento'],$_POST['input_volumen']);
         $this->ShowAdminLocation();
     }
 

@@ -18,16 +18,7 @@ class PedidoController{
     function addCartonero($params = null){
       // var_dump($_POST);
       if ($_POST !=null){
-        $id_ciudadano = 1;
-        $filepath = '';
-        if ($_FILES != NULL && $_FILES['imagen_material']['name']) {
-          if ($_FILES['image_url']['type'] == "image/jpeg" || $_FILES['image_url']['type'] == "image/jpg" || $_FILES['image_url']['type'] == "image/png") {
-              $filepath = $this->moveFile($_FILES['image_url']);
-          } else {
-              $this->view->showError("Formato no aceptado");
-          }
-      }
-        $status = $this->model->AddPedido($id_ciudadano,$_POST['franja_horario'],$_POST['volumen'],$filepath);
+        $status = $this->model->AddCartonero($_POST['dni'],$_POST['franja_horario'],$_POST['volumen'],$filepath);
         $this->view->mostrarResultado($status);
       } else{
         $this->view->mostrarError();

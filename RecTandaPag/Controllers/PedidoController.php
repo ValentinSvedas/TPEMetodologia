@@ -28,6 +28,7 @@ class PedidoController{
           }
       }
         $status = $this->model->AddPedido($id_ciudadano,$_POST['franja_horario'],$_POST['volumen'],$filepath);
+        $this->enviarMailCooperativa();
         $this->view->mostrarResultado($status);
       } else{
         $this->view->mostrarError();
@@ -38,6 +39,14 @@ class PedidoController{
       $filepath = "images/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
       move_uploaded_file($imagen['tmp_name'], $filepath);
       return $filepath;
-  }
+    }
+
+    private function enviarMailCooperativa(){
+      // ENVIO DE MAIL A LA COOPERATIVA
+      $to = "cooperativa@email.com";
+      $subject = "Ingresado de nuevo pedido de recoleccion";
+      $message = "Mensaje con datos del pedido";
+      mail($to, $subject, $message);
+    }
 
 }

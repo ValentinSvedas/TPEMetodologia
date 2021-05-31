@@ -7,8 +7,8 @@
             </h1>
             <h2 class="p-3">Añadir cartonero:</h2>
             
-            <div class="contentForm">
-                <form action="añadircartonero" method="post">
+            <div class="contentForm mb-5">
+                <form action="agregarCartonero" method="post">
                     <div class="row">
                       <div class="col">
                         <p>Nombre:</p>
@@ -30,23 +30,23 @@
                               <input type="text" class="form-control" name="input_dni" placeholder="DNI del cartonero">
                           </div>
                     </div>
-                    <div class="row">
+                    <div class="row p-1">
                         <div class="col">
-                            <p>Vehículo:</p>
-                            <input type="text" class="form-control" placeholder="Vehículo en el cual se movilizará">
+                          <p>Volumen Vechículo:</p>
+                          <select name="input_volumen" class="form-control">
+                            <option value="A">Caja</option>
+                            <option value="B">Auto</option>
+                            <option value="C">Camioneta</option>
+                            <option value="D">Camión</option>
+                          </select>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col ">
+                        <div class="col">
                             <p>Dirección:</p>
                             <input type="text" class="form-control" name="input_direccion" placeholder="Calle/Direccion">
                           </div>
-                          <div class="col ">
-                            <p>Tipo:</p>
-                            <input type="text" class="form-control" name="input_tipo" placeholder="Tipo_volumen">
-                          </div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row-reverse">
+                    <div class="d-flex flex-row-reverse mb-5">
                         <button type="submit" class="btn btn-primary ">Enviar</button>
                     </div>
                   </form>
