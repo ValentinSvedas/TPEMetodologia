@@ -1,5 +1,6 @@
 <?php
-    require_once 'php/administrar.php';
+    require_once 'Controllers/administrar.php';
+    require_once 'Controllers/PedidoController.php';
     require_once 'RouterClass.php';
 
     // CONSTANTES PARA RUTEO
@@ -19,11 +20,13 @@
     $r->addRoute("editar/:ID", "GET", "administrar", "EditCartonero");
     $r->addRoute("editar/editcartonero", "POST", "administrar", "Edit");
     $r->addRoute("añadircartonero", "POST", "administrar", "addCartonero");
-    
-    
+    $r->addRoute("advice", "POST", "PedidoController", "addPedido");
 
+
+    // Login
     $r->addRoute("indexAdmin", "POST", "administrar", "ShowLoginAdmin");
     
+    // RUTA POR DEFECTO
     $r->setDefaultRoute("administrar", "Home");
 
     //run

@@ -1,4 +1,4 @@
-USE bd_recolector;
+USE bd_cartonero;
 
 CREATE TABLE IF NOT EXISTS Cartonero (
     dni int not null,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS Cartonero (
 );
 
 CREATE TABLE IF NOT EXISTS Ciudadano (
-    id_ciudadano int not null,
+    id_ciudadano int not null AUTO_INCREMENT,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
     direccion varchar(20) not null,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Ciudadano (
 );
 
 CREATE TABLE IF NOT EXISTS Oferta_Transporte(
-    id_oferta_transporte int not null,
+    id_oferta_transporte int not null AUTO_INCREMENT,
     id_ciudadano int not null,
     tipo_volumen CHAR(1) not null,
     mail varchar(30) not null,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Oferta_Transporte(
 );
 
 CREATE TABLE IF NOT EXISTS Pedido(
-    id_ciudadano int not null,
+    id_ciudadano int not null AU,
     id_pedido int not null AUTO_INCREMENT,
     tipo_franja_horaria int not null,
     tipo_volumen CHAR(1) not null,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS Pedido(
 );
 
 CREATE TABLE IF NOT EXISTS Horario(
-    id_horario int not null,
+    id_horario int not null AUTO_INCREMENT,
     franja_horario varchar(20) not null,
     CONSTRAINT PK_HORARIO PRIMARY KEY (id_horario)
 );
