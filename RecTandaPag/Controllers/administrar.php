@@ -3,9 +3,11 @@
 require_once "./libs/smarty/Smarty.class.php";
 require_once "./php/CartoneroModel.php";
 require_once "./php/CiudadanoModel.php";
-require_once "./php/PedidoModel.php";
 require_once "./Views/CiudadanoView.php";
+require_once "./php/PedidoModel.php";
 require_once "./Views/PedidoView.php";
+require_once "./php/MaterialesModel.php";
+require_once "./Views/MaterialesView.php";
 
 class administrar{
     
@@ -18,6 +20,9 @@ class administrar{
     }
     function Home(){
         $smarty = new Smarty();
+        $stance = new MaterialesModel();
+        $materiales = $stance->GetMateriales();
+        $smarty->assign('materiales',$materiales);
         $smarty->display('templates/index.tpl');
     }
     function ShowLogin(){
