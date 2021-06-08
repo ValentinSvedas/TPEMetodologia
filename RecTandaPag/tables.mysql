@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS Volumen(
 CREATE TABLE IF NOT EXISTS Materiales(
   id_material int not null AUTO_INCREMENT,
   nombre varchar(20) not null,
+  descripcion varchar(300) not null,
   CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_material)
 );
 
@@ -84,6 +85,8 @@ ALTER TABLE Cartonero DROP FOREIGN KEY IF EXISTS FK_CARTONERO_VOLUMEN;
 ALTER TABLE Cartonero ADD CONSTRAINT FK_CARTONERO_VOLUMEN
     FOREIGN KEY (tipo_volumen)
     REFERENCES Volumen(id_volumen);
+
+ALTER TABLE Cartonero DROP CONSTRAINT IF EXISTS CT_MATERIAL;
 
 -- Materiales iniciales de la cooperativa
 INSERT INTO Materiales(nombre) VALUES ('papel');
