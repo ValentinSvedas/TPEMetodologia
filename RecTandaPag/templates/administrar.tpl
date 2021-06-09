@@ -1,7 +1,13 @@
 {include file="header.tpl"}
 <body>
     <div class="container">
-        <div><a href="administrar.html">Cartoneros   </a>|</div>
+        <div class="mr-2"></div>
+        <nav class="nav">
+          <a class="nav-link" href="administrar/cartoneros">Cartoneros</a>
+          <a class="nav-link" href="administrar/materiales">Materiales</a>
+          <a class="nav-link" href="administrar/pedidos">Pedidos</a>
+          <a class="nav-link" href="home">Home</a>
+        </nav>
         <div class="border-bottom">
             <h1 class="m-4">
                 Administrar:
