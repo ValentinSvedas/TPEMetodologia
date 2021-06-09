@@ -9,37 +9,38 @@ require_once "./Views/PedidoView.php";
 require_once "./php/MaterialesModel.php";
 require_once "./Views/MaterialesView.php";
 
+//Controlladores para casos complejos
+require_once "MaterialesController.php";
+
 class administrar{
     
     private $db;
     private $model;
+    private $smarty;
 
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
         $this->model = new CartoneroModel();
+        $this->smarty = new Smarty();
+        $this->smarty->assign('BASE_URL',BASE_URL);
     }
     function Home(){
-        $smarty = new Smarty();
         $stance = new MaterialesModel();
         $materiales = $stance->GetMateriales();
-        $smarty->assign('materiales',$materiales);
-        $smarty->display('templates/index.tpl');
+        $this->smarty->assign('materiales',$materiales);
+        $this->smarty->display('templates/index.tpl');
     }
     function ShowLogin(){
-        $smarty = new Smarty();
-        $smarty->display('templates/login.tpl');
+        $this->smarty->display('templates/login.tpl');
     }
 
     function ShowLoginAdmin(){
-        $smarty = new Smarty();
-        $smarty->display('templates/indexAdmin.tpl');
+        $this->smarty->display('templates/indexAdmin.tpl');
     }
     function ShowAdvice(){
-        $smarty = new Smarty();
-        $smarty->display('templates/advice.tpl');
+        $this->smarty->display('templates/advice.tpl');
     }
     function ShowReciclar(){
-        $smarty = new Smarty();
         $view = new PedidoView();
         $model = new PedidoModel();
         $pedidos = $model->GetPedidos();
@@ -47,23 +48,19 @@ class administrar{
         // $smarty->display('templates/reciclar.tpl');
     }
     function ShowAñadirCartonero(){
-        $smarty = new Smarty();
-        $smarty->display('templates/añadirC.tpl');
+        $this->smarty->display('templates/añadirC.tpl');
     }
     function Showadministrar($cartoneros){
-        $smarty = new Smarty();
-        $smarty->assign('cartoneros', $cartoneros);
-        $smarty->display('templates/administrar.tpl');
+        $this->smarty->assign('cartoneros', $cartoneros);
+        $this->smarty->display('templates/administrar.tpl');
     }
     function ShowDetailCartonero($cartonero){
-        $smarty = new Smarty();
-        $smarty->assign('cartonero', $cartonero);
-        $smarty->display('templates/detalleC.tpl');
+        $this->smarty->assign('cartonero', $cartonero);
+        $this->smarty->display('templates/detalleC.tpl');
     }
     function ShowEditCartonero($cartonero){
-        $smarty = new Smarty();
-        $smarty->assign('cartonero', $cartonero);
-        $smarty->display('templates/editarC.tpl');
+        $this->smarty->assign('cartonero', $cartonero);
+        $this->smarty->display('templates/editarC.tpl');
     }
 
     function getCartoneros(){
@@ -88,7 +85,6 @@ class administrar{
         $this->ShowEditCartonero($cartonero);
     }
     function addCartonero(){
-        // var_dump($_POST);
         $this->model->AddCartonero($_POST['input_dni'],$_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_direccion'],$_POST['input_fecha_nacimiento'],$_POST['input_volumen']);
         $this->ShowAdminLocation();
     }
@@ -98,8 +94,10 @@ class administrar{
         $this->ShowAdminLocation();
     }
 
-    
-
+    function ShowMateriales(){
+        $control = new MaterialesController();
+        $control->mostrarMateriales();
+    }
 
     function ShowAdminLocation(){
         header("Location: ".BASE_URL."administrar");

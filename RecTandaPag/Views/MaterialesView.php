@@ -11,8 +11,9 @@ class MaterialesView {
         $this->smarty->assign('BASE_URL',BASE_URL);
     }
 
-    public function DisplayMateriales() {
-      $this->smarty->display('templates/reciclar.tpl');
+    public function DisplayMateriales($materiales = []) {
+      $this->smarty->assign('materiales',$materiales);
+      $this->smarty->display('templates/materiales.tpl');
     }
 
 }

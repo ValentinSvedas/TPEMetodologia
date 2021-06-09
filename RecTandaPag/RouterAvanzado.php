@@ -1,11 +1,18 @@
 <?php
     require_once 'Controllers/administrar.php';
     require_once 'Controllers/PedidoController.php';
+    require_once 'Controllers/MaterialesController.php';
     require_once 'RouterClass.php';
 
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-    
+    // recurso solicitado
+    $resource = $_GET["action"];
+
+    // método utilizado
+    $method = $_SERVER["REQUEST_METHOD"];
+
+
     $r = new Router();
 
     // rutas
@@ -14,7 +21,8 @@
     $r->addRoute("advice", "GET", "administrar", "ShowAdvice");
     $r->addRoute("reciclar", "GET", "administrar", "ShowReciclar");
     $r->addRoute("añadirC", "GET", "administrar", "ShowAñadirCartonero");
-    $r->addRoute("administrar", "GET", "administrar", "getCartoneros"); 
+    $r->addRoute("administrar", "GET", "administrar", "getCartoneros");
+    $r->addRoute("administrar/materiales", "GET", "administrar", "ShowMateriales");
     $r->addRoute("detalleC/:ID", "GET", "administrar", "getCartonero");
     $r->addRoute("delete/:ID", "GET", "administrar", "deleteCartonero");
     $r->addRoute("editar/:ID", "GET", "administrar", "EditCartonero");
@@ -30,5 +38,5 @@
     $r->setDefaultRoute("administrar", "Home");
 
     //run
-    $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
+    $r->route($resource, $method);
 ?>
