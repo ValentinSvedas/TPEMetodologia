@@ -11,9 +11,9 @@
   </div>
   <!--FORMULARIO PARA NUEVO MATERIAL-->
   <div class="row m-5">
-    <div class="col-lg-12">
+    <div class="col-lg-12 border">
       <h3>Nuevo Material</h3>
-      <form action="nuevoMaterial" method="post">
+      <form action="administrar/nuevoMaterial" method="post">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="nombre_material">Nombre</label>
@@ -42,7 +42,7 @@
               <button type="button" class="btn btn-primary">Editar</button>
             </li>
             <li class="list-group-item">
-              <button type="button" class="btn btn-danger">Borrar</button>
+              <a href="administrar/borrarMaterial/{$currentItem->id_material}"><button type="button" class="btn btn-danger">Borrar</button></a>
             </li>
           </ul>
         </div>

@@ -99,6 +99,16 @@ class administrar{
         $control->mostrarMateriales();
     }
 
+    function NuevoMaterial($params = null){
+        $control = new MaterialesController();
+        $control->NuevoMaterial();
+    }
+
+    function BorrarMaterial($params = null){
+        $control = new MaterialesController();
+        $control->BorrarMaterial($params[':id']);
+    }
+
     function ShowAdminLocation(){
         header("Location: ".BASE_URL."administrar");
      }

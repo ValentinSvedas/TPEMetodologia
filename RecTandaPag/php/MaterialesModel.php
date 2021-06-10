@@ -14,6 +14,16 @@ class MaterialesModel{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    function NuevoMaterial($nombre,$descrip){
+        $query = $this->db->prepare("INSERT INTO materiales(nombre,descripcion) VALUES(?,?)");
+        return $query->execute(array($nombre,$descrip));
+    }
+
+    function BorrarMaterial($id){
+        $query = $this->db->prepare("DELETE FROM materiales WHERE id_material=?");
+        return $query->execute(array($id));
+    }
+
 
 }
 

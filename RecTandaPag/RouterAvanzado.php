@@ -6,6 +6,8 @@
 
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+    define("ADMIN_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/administrar');
+    define("ADMIN_MATERIALES_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/administrar/materiales');
     // recurso solicitado
     $resource = $_GET["action"];
 
@@ -23,6 +25,8 @@
     $r->addRoute("añadirC", "GET", "administrar", "ShowAñadirCartonero");
     $r->addRoute("administrar", "GET", "administrar", "getCartoneros");
     $r->addRoute("administrar/materiales", "GET", "administrar", "ShowMateriales");
+    $r->addRoute("administrar/nuevoMaterial", "POST", "administrar", "NuevoMaterial");
+    $r->addRoute("administrar/borrarMaterial/:id", "GET", "administrar", "BorrarMaterial");
     $r->addRoute("detalleC/:ID", "GET", "administrar", "getCartonero");
     $r->addRoute("delete/:ID", "GET", "administrar", "deleteCartonero");
     $r->addRoute("editar/:ID", "GET", "administrar", "EditCartonero");
