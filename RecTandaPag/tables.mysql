@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Oferta_Transporte(
 );
 
 CREATE TABLE IF NOT EXISTS Pedido(
-    id_ciudadano int not null AU,
+    id_ciudadano int not null,
     id_pedido int not null AUTO_INCREMENT,
     tipo_franja_horaria int not null,
     tipo_volumen CHAR(1) not null,
@@ -89,13 +89,13 @@ ALTER TABLE Cartonero ADD CONSTRAINT FK_CARTONERO_VOLUMEN
 ALTER TABLE Cartonero DROP CONSTRAINT IF EXISTS CT_MATERIAL;
 
 -- Materiales iniciales de la cooperativa
-INSERT INTO Materiales(nombre) VALUES ('papel');
-INSERT INTO Materiales(nombre) VALUES ('cartón');
-INSERT INTO Materiales(nombre) VALUES ('envases plásticos');
-INSERT INTO Materiales(nombre) VALUES ('latas de conserva');
-INSERT INTO Materiales(nombre) VALUES ('tetrabrik');
-INSERT INTO Materiales(nombre) VALUES ('envases de aluminio');
-INSERT INTO Materiales(nombre) VALUES ('botellas de vidrio');
+INSERT INTO Materiales(nombre,descripcion) VALUES ('papel','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
+INSERT INTO Materiales(nombre,descripcion) VALUES ('cartón','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
+INSERT INTO Materiales(nombre,descripcion) VALUES ('envases plásticos','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
+INSERT INTO Materiales(nombre,descripcion) VALUES ('latas de conserva','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
+INSERT INTO Materiales(nombre,descripcion) VALUES ('tetrabrik','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
+INSERT INTO Materiales(nombre,descripcion) VALUES ('envases de aluminio','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
+INSERT INTO Materiales(nombre,descripcion) VALUES ('botellas de vidrio','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
 
 -- Tipos de espacio para el transporte
 INSERT INTO Volumen(id_volumen, tamaño) VALUES ('A','En una caja');

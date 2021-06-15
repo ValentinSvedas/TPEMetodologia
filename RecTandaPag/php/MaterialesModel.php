@@ -30,6 +30,11 @@ class MaterialesModel{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    function GuardarMaterial($id = 1,$nombre = "default", $descrip = ' '){
+        $query = $this->db->prepare("UPDATE materiales SET nombre=?, descripcion=? FROM materiales WHERE id_material= ?");
+        return $query -> execute(array($nombre,$descrip,$id));
+    }
+
 
 }
 

@@ -34,9 +34,16 @@ class MaterialesController{
       die;
     }
 
-    function EditMaterial($id_material = null){
+    function EditMaterial($id_material = 1){
       $material = $this->model->GetSingleMaterial($id_material);
       $this->view->DisplayEditMaterial($material);
+    }
+
+    function GuardarMaterial($id_material = 1,$nombre,$descrip){
+      $response = $this->model->GuardarMaterial($id_material,$nombre,$descrip);
+      var_dump($response);
+      //header("Location: ".ADMIN_MATERIALES_URL);
+      //die;
     }
 
 }

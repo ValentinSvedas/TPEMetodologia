@@ -33,6 +33,7 @@
     //$r->addRoute("editar/:ID", "GET", "administrar", "EditCartonero");
     //$r->addRoute("editar/editcartonero", "POST", "administrar", "Edit");
     $r->addRoute("editar/material/:id", "GET", "administrar", "EditMaterial");
+    $r->addRoute("guardar/material/:id", "POST", "administrar", "GuardarMaterial");
     //$r->addRoute("agregarCartonero", "POST", "administrar", "addCartonero");
     $r->addRoute("advice", "POST", "PedidoController", "addPedido");
 

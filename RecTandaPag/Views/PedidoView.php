@@ -20,9 +20,8 @@ class PedidoView {
       $this->smarty->display('index.tpl');
     }
 
-    public function mostrarResultado($status){
-      $this->smarty->assing('status',$status);
-      $this->smarty->display('templates/advice.tpl');
+    public function mostrarResultado(){
+      $this->smarty->display('templates/reciclar.tpl');
     }
 
     public function DisplayPedidosAdmin($pedidos = []){

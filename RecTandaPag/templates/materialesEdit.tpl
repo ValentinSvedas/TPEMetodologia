@@ -4,7 +4,7 @@
         {include file="adminNav.tpl"}
             <h2 class="p-3">Editar Material:</h2>
             <div class="contentForm">
-                <form action="editar/material/{$material[0]->id_material}" method="post">
+                <form action="guardar/material/{$material[0]->id_material}" method="post">
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="nombre_material">Nombre</label>

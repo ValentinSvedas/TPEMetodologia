@@ -27,9 +27,9 @@ class PedidoController{
               $this->view->showError("Formato no aceptado");
           }
       }
-        $status = $this->model->AddPedido($id_ciudadano,$_POST['franja_horario'],$_POST['volumen'],$filepath);
-        $this->enviarMailCooperativa();
-        $this->view->mostrarResultado($status);
+        $this->model->AddPedido($id_ciudadano,$_POST['franja_horario'],$_POST['volumen'],$filepath);
+        //$this->enviarMailCooperativa();
+        $this->view->mostrarResultado();
       } else{
         $this->view->mostrarError();
       }

@@ -101,6 +101,12 @@ class administrar{
         $control->EditMaterial($id);
     }
 
+    function GuardarMaterial($params = null){
+        $id = $params[':id'];
+        $control = new MaterialesController();
+        $control->GuardarMaterial($id,$_POST['nombre_material'],$_POST['descripcion_material']);
+    }
+
     function ShowMateriales(){
         $control = new MaterialesController();
         $control->mostrarMateriales();
