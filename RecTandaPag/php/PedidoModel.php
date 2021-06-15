@@ -23,10 +23,11 @@ class PedidoModel{
         $sentencia->execute();
     }
 
+    // !!!!! RELIZAR PEDIDO ENTRE TABLAS PARA TRAER TODA LOS DATOS Y NO REFERENCIAS
     function GetPedidos(){
         $sentencia = $this->db->prepare("SELECT * FROM pedido");
         $sentencia->execute();
-        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
     function GetPedido($id_ciudadano){

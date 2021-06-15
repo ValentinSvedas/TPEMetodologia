@@ -24,6 +24,12 @@ class MaterialesModel{
         return $query->execute(array($id));
     }
 
+    function GetSingleMaterial($id){
+        $query = $this->db->prepare("SELECT * FROM materiales WHERE id_material= ?");
+        $query -> execute(array($id));
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
 
 }
 

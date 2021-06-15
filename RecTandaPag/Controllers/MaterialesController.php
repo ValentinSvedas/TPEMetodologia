@@ -34,4 +34,9 @@ class MaterialesController{
       die;
     }
 
+    function EditMaterial($id_material = null){
+      $material = $this->model->GetSingleMaterial($id_material);
+      $this->view->DisplayEditMaterial($material);
+    }
+
 }

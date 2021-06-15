@@ -21,8 +21,13 @@ class PedidoView {
     }
 
     public function mostrarResultado($status){
-      // $this->smarty->assing('status',$status);
+      $this->smarty->assing('status',$status);
       $this->smarty->display('templates/advice.tpl');
+    }
+
+    public function DisplayPedidosAdmin($pedidos = []){
+      $this->smarty->assign('pedidos',$pedidos);
+      $this->smarty->display('templates/pedidosAdmin.tpl');
     }
 
 }

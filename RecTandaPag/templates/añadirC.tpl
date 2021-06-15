@@ -1,12 +1,11 @@
 {include file="header.tpl"}
 <body>
     <div class="container">
-        <div><a href="administrar.html">Cartoneros   </a>|</div>
+        {include file="adminNav.tpl"}
             <h1 class="m-4">
                 Administrar:
             </h1>
             <h2 class="p-3">Añadir cartonero:</h2>
-            
             <div class="contentForm mb-5">
                 <form action="agregarCartonero" method="post">
                     <div class="row">

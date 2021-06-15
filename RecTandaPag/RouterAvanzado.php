@@ -25,13 +25,15 @@
     $r->addRoute("añadirC", "GET", "administrar", "ShowAñadirCartonero");
     $r->addRoute("administrar", "GET", "administrar", "getCartoneros");
     $r->addRoute("administrar/materiales", "GET", "administrar", "ShowMateriales");
+    $r->addRoute("administrar/pedidos", "GET", "administrar", "ShowPedidos");
     $r->addRoute("administrar/nuevoMaterial", "POST", "administrar", "NuevoMaterial");
     $r->addRoute("administrar/borrarMaterial/:id", "GET", "administrar", "BorrarMaterial");
-    $r->addRoute("detalleC/:ID", "GET", "administrar", "getCartonero");
-    $r->addRoute("delete/:ID", "GET", "administrar", "deleteCartonero");
-    $r->addRoute("editar/:ID", "GET", "administrar", "EditCartonero");
-    $r->addRoute("editar/editcartonero", "POST", "administrar", "Edit");
-    $r->addRoute("agregarCartonero", "POST", "administrar", "addCartonero");
+    //$r->addRoute("detalleC/:ID", "GET", "administrar", "getCartonero");
+    //$r->addRoute("delete/:ID", "GET", "administrar", "deleteCartonero");
+    //$r->addRoute("editar/:ID", "GET", "administrar", "EditCartonero");
+    //$r->addRoute("editar/editcartonero", "POST", "administrar", "Edit");
+    $r->addRoute("editar/material/:id", "GET", "administrar", "EditMaterial");
+    //$r->addRoute("agregarCartonero", "POST", "administrar", "addCartonero");
     $r->addRoute("advice", "POST", "PedidoController", "addPedido");
 
 

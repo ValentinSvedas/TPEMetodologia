@@ -16,6 +16,11 @@ class MaterialesView {
       $this->smarty->display('templates/materiales.tpl');
     }
 
+    public function DisplayEditMaterial($material = []){
+      $this->smarty->assign('material',$material);
+      $this->smarty->display('templates/materialesEdit.tpl');
+    }
+
 }
 
 ?>

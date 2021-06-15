@@ -11,6 +11,7 @@ require_once "./Views/MaterialesView.php";
 
 //Controlladores para casos complejos
 require_once "MaterialesController.php";
+require_once "PedidoController.php";
 
 class administrar{
     
@@ -94,6 +95,12 @@ class administrar{
         $this->ShowAdminLocation();
     }
 
+    function EditMaterial($params = null){
+        $id = $params[':id'];
+        $control = new MaterialesController();
+        $control->EditMaterial($id);
+    }
+
     function ShowMateriales(){
         $control = new MaterialesController();
         $control->mostrarMateriales();
@@ -107,6 +114,11 @@ class administrar{
     function BorrarMaterial($params = null){
         $control = new MaterialesController();
         $control->BorrarMaterial($params[':id']);
+    }
+
+    function ShowPedidos(){
+        $control = new PedidoController();
+        $control->showPedidosAdmin();
     }
 
     function ShowAdminLocation(){

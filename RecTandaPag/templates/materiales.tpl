@@ -1,14 +1,7 @@
 {include file="header.tpl"}
 <body>
 <div class="container">
-  <div class="row mr-2">
-    <nav class="nav">
-      <a class="nav-link" href="administrar/cartoneros">Cartoneros</a>
-      <a class="nav-link" href="administrar/materiales">Materiales</a>
-      <a class="nav-link" href="administrar/pedidos">Pedidos</a>
-      <a class="nav-link" href="home">Home</a>
-    </nav>
-  </div>
+  {include file="adminNav.tpl"}
   <!--FORMULARIO PARA NUEVO MATERIAL-->
   <div class="row m-5">
     <div class="col-lg-12 border">
@@ -30,25 +23,27 @@
   </div>
   <!--LISTADO DE MATERIALES CON OPCION DE BORRADO Y EDICION-->
   <div class="row">
-  {foreach from=$materiales item=currentItem}
-    <div class="row mt-5 d-flex justify-content-between">
-      <div class="col-lg-6">
-        <h2>{$currentItem->nombre}</h2>
-      </div>
-      <div class="col-lg-3">
-        <div class="options d-flex">
-          <ul class="list-group list-group-horizontal">
-            <li class="list-group-item">
-              <button type="button" class="btn btn-primary">Editar</button>
-            </li>
-            <li class="list-group-item">
-              <a href="administrar/borrarMaterial/{$currentItem->id_material}"><button type="button" class="btn btn-danger">Borrar</button></a>
-            </li>
-          </ul>
+  {if isset($materiales)}
+    {foreach from=$materiales item=currentItem}
+      <div class="row mt-5 d-flex justify-content-between">
+        <div class="col-lg-6">
+          <h2>{$currentItem->nombre}</h2>
+        </div>
+        <div class="col-lg-3">
+          <div class="options d-flex">
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item">
+                <a href="editar/material/{$currentItem->id_material}"><button type="button" class="btn btn-primary">Editar</button></a>
+              </li>
+              <li class="list-group-item">
+                <a href="administrar/borrarMaterial/{$currentItem->id_material}"><button type="button" class="btn btn-danger">Borrar</button></a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  {/foreach}
+    {/foreach}
+  {/if}
   </div>
 </div>
 </body>

@@ -19,7 +19,8 @@
                         <a href="aboutus">Sobre nosotros</a>
                         <a href="reciclar">Reciclar</a>
                         <a href="centroacopio">Centro de acopio</a>
-                        <a href="login" class="btn btn-light">Iniciar sesión</a>
+                        <!--DEJAR COMENTADO POR SI SE PIDE EN FUTUROS SPRINT-->
+                        <!--<a href="login" class="btn btn-light">Iniciar sesión</a>-->
                 </div>
             </div>
     </nav>

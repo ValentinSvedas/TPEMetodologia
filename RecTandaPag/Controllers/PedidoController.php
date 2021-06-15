@@ -49,4 +49,9 @@ class PedidoController{
       mail($to, $subject, $message);
     }
 
+    function showPedidosAdmin(){
+      $pedidos = $this->model->GetPedidos();
+      $this->view->DisplayPedidosAdmin($pedidos);
+    }
+
 }

@@ -1,20 +1,11 @@
 {include file="header.tpl"}
 <body>
     <div class="container">
-        <div class="mr-2"></div>
-        <nav class="nav">
-          <a class="nav-link" href="administrar/cartoneros">Cartoneros</a>
-          <a class="nav-link" href="administrar/materiales">Materiales</a>
-          <a class="nav-link" href="administrar/pedidos">Pedidos</a>
-          <a class="nav-link" href="home">Home</a>
-        </nav>
-        <div class="border-bottom">
-            <h1 class="m-4">
-                Administrar:
-            </h1>
+        {include file="adminNav.tpl"}
+        <div class="border-bottom m-5">
             <h2>Cartoneros:</h2>
         </div>
-        <div>
+        <!--<div>
             <table class="table table-hover">
                 <thead>
                   <tr>
@@ -39,7 +30,7 @@
                 </tbody>
               </table>
               <a href="añadirC" class="btn btn-success">Añadir Cartonero</a>
-        </div>
+        </div>-->
     </div>
     
     {include file="footer.tpl"}
