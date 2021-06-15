@@ -41,9 +41,8 @@ class MaterialesController{
 
     function GuardarMaterial($id_material = 1,$nombre,$descrip){
       $response = $this->model->GuardarMaterial($id_material,$nombre,$descrip);
-      var_dump($response);
-      //header("Location: ".ADMIN_MATERIALES_URL);
-      //die;
+      header("Location: ".ADMIN_MATERIALES_URL);
+      die;
     }
 
 }
