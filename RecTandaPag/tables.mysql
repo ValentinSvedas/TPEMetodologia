@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Horario(
 
 CREATE TABLE IF NOT EXISTS Volumen(
     id_volumen CHAR(1) not null,
-    tamaño varchar(20) not null,
+    tamanio varchar(20) not null,
     CONSTRAINT PK_VOLUMEN PRIMARY KEY (id_volumen)
 );
 
