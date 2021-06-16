@@ -41,13 +41,13 @@ class PedidoController{
       return $filepath;
     }
 
-    private function enviarMailCooperativa(){
-      // ENVIO DE MAIL A LA COOPERATIVA
-      $to = "cooperativa@email.com";
-      $subject = "Ingresado de nuevo pedido de recoleccion";
-      $message = "Mensaje con datos del pedido";
-      mail($to, $subject, $message);
-    }
+    // private function enviarMailCooperativa(){
+    //   // ENVIO DE MAIL A LA COOPERATIVA
+    //   $to = "cooperativa@email.com";
+    //   $subject = "Ingresado de nuevo pedido de recoleccion";
+    //   $message = "Mensaje con datos del pedido";
+    //   mail($to, $subject, $message);
+    // }
 
     function showPedidosAdmin(){
       $pedidos = $this->model->GetPedidos();

@@ -41,6 +41,7 @@ class administrar{
         $smarty->assign('cartoneros', $cartoneros);
         $smarty->display('templates/administrar.tpl');
     }
+    
     function ShowDetailCartonero($cartonero){
         $smarty = new Smarty();
         $smarty->assign('cartonero', $cartonero);
@@ -82,9 +83,6 @@ class administrar{
         $this->model->updateCartonero($_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_fecha_nacimiento'],$_POST['input_dni'],$_POST['input_direccion'],$_POST['input_tipo']);
         $this->ShowAdminLocation();
     }
-
-    
-
 
     function ShowAdminLocation(){
         header("Location: ".BASE_URL."administrar");

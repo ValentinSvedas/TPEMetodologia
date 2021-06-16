@@ -16,12 +16,10 @@ require_once "PedidoController.php";
 class administrar{
     
     private $db;
-    private $model;
     private $smarty;
 
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
-        $this->model = new CartoneroModel();
         $this->smarty = new Smarty();
         $this->smarty->assign('BASE_URL',BASE_URL);
     }
@@ -97,33 +95,33 @@ class administrar{
     }
 
     function getCartoneros(){
-        $cartoneros= $this->model->GetCartoneros();
-        $this->Showadministrar($cartoneros);
+        //$cartoneros= $this->model->GetCartoneros();
+        $this->Showadministrar([]);
     }
     function getCartonero($params = null){
         $dni = $params[':ID'];
-        $cartonero= $this->model->GetCartonero($dni);
+        //$cartonero= $this->model->GetCartonero($dni);
         $this->ShowDetailCartonero($cartonero);
     }
 
     function deleteCartonero($params = null){
         $dni = $params[':ID'];
-        $cartonero= $this->model->DeleteCartonero($dni);
+        //$cartonero= $this->model->DeleteCartonero($dni);
         $this->ShowAdminLocation();
     }
 
     function EditCartonero($params = null){
         $dni = $params[':ID'];
-        $cartonero = $this->model->GetCartonero($dni);
+       // $cartonero = $this->model->GetCartonero($dni);
         $this->ShowEditCartonero($cartonero);
     }
     function addCartonero(){
-        $this->model->AddCartonero($_POST['input_dni'],$_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_direccion'],$_POST['input_fecha_nacimiento'],$_POST['input_volumen']);
+        //$this->model->AddCartonero($_POST['input_dni'],$_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_direccion'],$_POST['input_fecha_nacimiento'],$_POST['input_volumen']);
         $this->ShowAdminLocation();
     }
 
     function Edit(){
-        $this->model->updateCartonero($_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_fecha_nacimiento'],$_POST['input_dni'],$_POST['input_direccion'],$_POST['input_tipo']);
+        //$this->model->updateCartonero($_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_fecha_nacimiento'],$_POST['input_dni'],$_POST['input_direccion'],$_POST['input_tipo']);
         $this->ShowAdminLocation();
     }
 

@@ -13,17 +13,31 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            {if isset($pedidos)}
-              {foreach from=$pedidos item=currentItem}
-                <div class="row">
-                  <p>{$currentItem->id_ciudadano}</p>
-                  <p>{$currentItem->id_pedido}</p>
-                  <p>{$currentItem->tipo_franja_horaria}</p>
-                  <p>{$currentItem->tipo_volumen}</p>
-                  <p>{$currentItem->imagen_materiales}</p>                
-                </div>
-              {/foreach}
-            {/if}
+            <!--id_pedido,id_ciudadano,id_horario vienen en los items para control a futuro-->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Direccion</th>
+                  <th scope="col">Franja Horario</th>
+                  <th scope="col">Tamaño</th>
+                </tr>
+              </thead>
+              <tbody>
+                {if isset($pedidos)}
+                  {foreach from=$pedidos item=currentItem}
+                    <tr>
+                      <td>{$currentItem->nombre}</td>
+                      <td>{$currentItem->apellido}</td>
+                      <td>{$currentItem->direccion}</td>
+                      <td>{$currentItem->franja_horario}</td>
+                      <td>{$currentItem->tamanio}</td>
+                    </tr>
+                  {/foreach}
+                {/if}
+              </tbody>
+            </table>
           </div>
         </div>
     </div>

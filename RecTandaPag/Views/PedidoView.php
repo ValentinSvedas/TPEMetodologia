@@ -16,9 +16,9 @@ class PedidoView {
       $this->smarty->display('templates/reciclar.tpl');
     }
 
-    public function mostrarError(){
-      $this->smarty->display('index.tpl');
-    }
+    // public function mostrarError(){
+    //   $this->smarty->display('index.tpl');
+    // }
 
     public function mostrarResultado(){
       $this->smarty->display('templates/reciclar.tpl');
