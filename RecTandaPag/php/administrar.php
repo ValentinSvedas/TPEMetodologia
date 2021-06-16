@@ -20,7 +20,6 @@ class administrar{
         $smarty = new Smarty();
         $smarty->display('templates/login.tpl');
     }
-
     function ShowLoginAdmin(){
         $smarty = new Smarty();
         $smarty->display('templates/indexAdmin.tpl');

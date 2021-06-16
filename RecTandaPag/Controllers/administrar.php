@@ -63,6 +63,38 @@ class administrar{
         $this->smarty->assign('cartonero', $cartonero);
         $this->smarty->display('templates/editarC.tpl');
     }
+    function ShowcentroAcopio(){
+        $this->smarty->display('templates/centroAcopio.tpl');
+    }
+     function ShowpesajeVecino($kgTotales=''){
+        $this->smarty->assign('kgTotales',$kgTotales);
+        $this->smarty->display('templates/pesajeVecino.tpl');
+    }
+    
+    function agregarkgVecino(){
+        $kgTotales = $_POST['input_kgacopiados'];
+        if(isset($kgTotales)){
+            $this->ShowpesajeVecino($kgTotales);
+        }else{
+            $this->ShowpesajeVecino();
+          }
+    }
+    
+    function ShowpesajeCartonero($kgTotales='', $cartonero =''){
+        $this->smarty->assign('kgTotales',$kgTotales);
+        $this->smarty->assign('cartonero',$cartonero);
+        $this->smarty->display('templates/pesajeCartonero.tpl');
+    }
+    
+    function agregarkgCartonero(){
+        $kgTotales = $_POST['input_kgacoplados'];
+        $cartonero = $_POST['input_cartonero'];
+        if(isset($kgTotales)){
+            $this->ShowpesajeCartonero($kgTotales,$cartonero);
+        }else{
+          $this->ShowpesajeCartonero();
+        }
+    }
 
     function getCartoneros(){
         $cartoneros= $this->model->GetCartoneros();
@@ -126,6 +158,7 @@ class administrar{
         $control = new PedidoController();
         $control->showPedidosAdmin();
     }
+   
 
     function ShowAdminLocation(){
         header("Location: ".BASE_URL."administrar");
