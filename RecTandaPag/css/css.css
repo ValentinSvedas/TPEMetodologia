@@ -1,10 +1,7 @@
 .selector-for-some-widget {
     box-sizing: content-box;
   }
-  nav{
-      background-color:   #99e4c5;
-  }
-
+  
   a{
     text-decoration: none;
     user-select: none;
@@ -18,7 +15,7 @@
       border-radius: 10px;
   }
   .bg-th{
-      background-color: #02eb3c;
+      background-color: #777;
   }
 
   .negrita{
