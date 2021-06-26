@@ -29,7 +29,7 @@ class PedidoModel{
         SELECT p.id_pedido,c.id_ciudadano,h.id_horario,c.nombre,c.apellido,c.direccion,h.franja_horario,v.tamanio FROM pedido p 
         JOIN ciudadano c ON c.id_ciudadano = p.id_ciudadano
         JOIN volumen v ON v.id_volumen=p.tipo_volumen
-        JOIN horario h ON h.id_horario=p.tipo_franja_horaria");
+        JOIN horario h ON h.id_horario=p.tipo_franja_horaria;");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }

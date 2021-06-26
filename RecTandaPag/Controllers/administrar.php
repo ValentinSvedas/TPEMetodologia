@@ -95,33 +95,39 @@ class administrar{
     }
 
     function getCartoneros(){
-        //$cartoneros= $this->model->GetCartoneros();
-        $this->Showadministrar([]);
+        $modelCart = new CartoneroModel();
+        $cartoneros= $modelCart->GetCartoneros();
+        $this->Showadministrar($cartoneros);
     }
     function getCartonero($params = null){
         $dni = $params[':ID'];
-        //$cartonero= $this->model->GetCartonero($dni);
+        $modelCart = new CartoneroModel();
+        $cartonero= $modelCart->GetCartonero($dni);
         $this->ShowDetailCartonero($cartonero);
     }
 
     function deleteCartonero($params = null){
         $dni = $params[':ID'];
-        //$cartonero= $this->model->DeleteCartonero($dni);
+        $modelCart = new CartoneroModel();
+        $cartonero= $modelCart->DeleteCartonero($dni);
         $this->ShowAdminLocation();
     }
 
     function EditCartonero($params = null){
         $dni = $params[':ID'];
-       // $cartonero = $this->model->GetCartonero($dni);
+        $modelCart = new CartoneroModel();
+        $cartonero = $modelCart->GetCartonero($dni);
         $this->ShowEditCartonero($cartonero);
     }
     function addCartonero(){
-        //$this->model->AddCartonero($_POST['input_dni'],$_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_direccion'],$_POST['input_fecha_nacimiento'],$_POST['input_volumen']);
+        $modelCart = new CartoneroModel();
+        $modelCart->AddCartonero($_POST['input_dni'],$_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_direccion'],$_POST['input_fecha_nacimiento'],$_POST['input_volumen']);
         $this->ShowAdminLocation();
     }
 
     function Edit(){
-        //$this->model->updateCartonero($_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_fecha_nacimiento'],$_POST['input_dni'],$_POST['input_direccion'],$_POST['input_tipo']);
+        $modelCart = new CartoneroModel();
+        $modelCart->updateCartonero($_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_fecha_nacimiento'],$_POST['input_dni'],$_POST['input_direccion'],$_POST['input_tipo']);
         $this->ShowAdminLocation();
     }
 
