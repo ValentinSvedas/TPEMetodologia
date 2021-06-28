@@ -12,15 +12,23 @@ require_once "./Views/MaterialesView.php";
 //Controlladores para casos complejos
 require_once "MaterialesController.php";
 require_once "PedidoController.php";
+require_once "./helpers/authHelper.php";
+require_once "./Controllers/LoginController.php";
 
 class administrar{
     
     private $db;
     private $smarty;
+    private $admin;
+    private $login;
 
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
         $this->smarty = new Smarty();
+        $this->admin = new AuthHelper();
+        $this->login = new LoginController();
+        $this->smarty->assign('loged',$this->admin->checkUser());
+        
         $this->smarty->assign('BASE_URL',BASE_URL);
     }
     function Home(){
@@ -49,9 +57,14 @@ class administrar{
     function ShowAñadirCartonero(){
         $this->smarty->display('templates/añadirC.tpl');
     }
-    function Showadministrar($cartoneros){
-        $this->smarty->assign('cartoneros', $cartoneros);
-        $this->smarty->display('templates/administrar.tpl');
+    function ShowAdministrar($cartoneros){
+        $this->admin->checkLoggedIn();
+        if($this->admin->checkUser()){
+            $this->smarty->assign('cartoneros', $cartoneros);
+            $this->smarty->display('templates/administrar.tpl');
+        }else{
+            $this->ShowHomeLocation();
+        }
     }
     function ShowDetailCartonero($cartonero){
         $this->smarty->assign('cartonero', $cartonero);
@@ -163,6 +176,9 @@ class administrar{
         $control->showPedidosAdmin();
     }
    
+    function ShowHomeLocation(){
+        header("Location: ".BASE_URL."home");
+     }
 
     function ShowAdminLocation(){
         header("Location: ".BASE_URL."administrar");

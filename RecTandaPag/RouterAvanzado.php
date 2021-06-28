@@ -47,6 +47,9 @@
 
     // Login
     $r->addRoute("indexAdmin", "POST", "administrar", "ShowLoginAdmin");
+    $r->addRoute("admin", "GET","LoginController", "Login");
+    $r->addRoute("verifyUser", "POST", "LoginController", "VerifyUser");
+    $r->addRoute("logout", "GET", "LoginController", "Logout");
     
     // RUTA POR DEFECTO
     $r->setDefaultRoute("administrar", "Home");

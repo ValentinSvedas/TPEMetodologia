@@ -2,17 +2,20 @@
 
 require_once "./php/CartoneroModel.php";
 require_once "./Views/CartoneroView.php";
+require_once "./helpers/authHelper.php";
 
 class PedidoController{
     
     private $db;
     private $model;
     private $view;
+    private $authHelper;
 
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
         $this->model = new PedidoModel();
         $this->view = new PedidoView();
+        $this->authHelper= new authHelper();
     }
     
     function addCartonero($params = null){
