@@ -175,6 +175,11 @@ class administrar{
         $control = new PedidoController();
         $control->showPedidosAdmin();
     }
+
+    function ShowCartoneros(){
+        $control = new CartoneroController();
+        $control->showCartonerosAdmin();
+    }
    
     function ShowHomeLocation(){
         header("Location: ".BASE_URL."home");

@@ -24,7 +24,9 @@ class CartoneroModel{
         $sentencia->execute(array($dni));
     }
     function GetCartoneros(){
-        $query = $this->db->prepare("SELECT * FROM cartonero");
+        $query = $this->db->prepare("
+        SELECT c.dni,c.nombre,c.apellido,c.direccion,c.fecha_nacimiento,v.tamanio FROM cartonero c 
+        JOIN volumen v ON v.id_volumen = c.tipo_volumen;");
         $query -> execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

@@ -13,8 +13,8 @@ class PedidoController{
 
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
-        $this->model = new PedidoModel();
-        $this->view = new PedidoView();
+        $this->model = new CartoneroModel();
+        $this->view = new CartoneroView();
         $this->authHelper= new authHelper();
     }
     
@@ -32,6 +32,17 @@ class PedidoController{
       $filepath = "images/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
       move_uploaded_file($imagen['tmp_name'], $filepath);
       return $filepath;
-  }
+    }
+
+    function showCartonerosAdmin(){
+      $this->authHelper->checkLoggedIn();
+        if($this->authHelper->checkUser()){
+          $cartoneros = $this->model->GetCartoneros();
+          $this->view->DisplayPedidosAdmin($cartoneros);
+        }else{
+          header("Location: ".BASE_URL."home");
+        }
+    }
+
 
 }
