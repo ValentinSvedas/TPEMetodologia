@@ -4,7 +4,7 @@ require_once "./php/CartoneroModel.php";
 require_once "./Views/CartoneroView.php";
 require_once "./helpers/authHelper.php";
 
-class PedidoController{
+class CartoneroController{
     
     private $db;
     private $model;
@@ -38,7 +38,7 @@ class PedidoController{
       $this->authHelper->checkLoggedIn();
         if($this->authHelper->checkUser()){
           $cartoneros = $this->model->GetCartoneros();
-          $this->view->DisplayPedidosAdmin($cartoneros);
+          $this->view->DisplayCartonerosAdmin($cartoneros);
         }else{
           header("Location: ".BASE_URL."home");
         }

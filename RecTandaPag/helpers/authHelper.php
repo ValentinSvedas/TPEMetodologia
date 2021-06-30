@@ -18,7 +18,7 @@ class AuthHelper{
 
     public function checkLoggedIn() {
         if (!isset($_SESSION['ID_USER'])) {
-            header('Location: ' . home);
+            header("Location: ".BASE_URL."home");
             die();
         } else{
             if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) { 
