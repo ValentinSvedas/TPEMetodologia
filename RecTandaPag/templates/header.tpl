@@ -28,4 +28,6 @@
                     <a href="admin" class="badministrar">Administrar</a>
                     {/if}
             </div>
+            <div>
+            </div>
     </nav>
