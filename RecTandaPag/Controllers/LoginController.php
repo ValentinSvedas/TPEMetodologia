@@ -34,7 +34,7 @@ class LoginController{
                 // Existe el usuario
                 if (password_verify($pass, $userDB->password)){
                     $this->authHelper->login($userDB);
-                    header("Location: ".BASE_URL."administrar");
+                    header("Location: ".BASE_URL."administrar/cartoneros");
                 }else{
                     $this->view->ShowLogin("Contraseña incorrecta");
                 }

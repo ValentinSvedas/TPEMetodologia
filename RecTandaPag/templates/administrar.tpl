@@ -36,5 +36,5 @@
           <a href="añadirC" class="btn btn-success">Añadir Cartonero</a>
         </div>
     </div>
-    
-    {include file="footer.tpl"}
+</body>    
+{include file="footer.tpl"}

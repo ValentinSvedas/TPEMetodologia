@@ -20,4 +20,5 @@
             </ul>
         </div>
     </div>
+</body>
 {include file="footer.tpl"}

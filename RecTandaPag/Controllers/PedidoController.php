@@ -19,9 +19,8 @@ class PedidoController{
     }
     
     function addPedido(){
-      // var_dump($_POST);
+      //var_dump($_POST);
       if ($_POST !=null){
-        $id_ciudadano = 1;
         $filepath = '';
         if ($_FILES != NULL && $_FILES['imagen_material']['name']) {
           if ($_FILES['image_url']['type'] == "image/jpeg" || $_FILES['image_url']['type'] == "image/jpg" || $_FILES['image_url']['type'] == "image/png") {
@@ -30,7 +29,7 @@ class PedidoController{
               $this->view->showError("Formato no aceptado");
           }
       }
-        $this->model->AddPedido($id_ciudadano,$_POST['franja_horario'],$_POST['volumen'],$filepath);
+        $this->model->AddPedido($_POST['nombre'],$_POST['apellido'],$_POST['direccion'],$_POST['telefono'],$_POST['franja_horario'],$_POST['volumen'],$filepath);
         //$this->enviarMailCooperativa();
         $this->view->mostrarResultado();
       } else{

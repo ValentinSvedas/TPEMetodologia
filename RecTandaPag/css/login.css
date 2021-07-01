@@ -76,3 +76,9 @@
       display: block;
         margin-top: 12px;
     }
+
+    body{
+      background-image: url("https://rbeuropa.com/wp-content/uploads/2016/04/que-hacemos-reciclaje-electr%C3%B3nico-waste.jpg");
+      background-repeat: no-repeat;
+      background-size: auto;
+    }

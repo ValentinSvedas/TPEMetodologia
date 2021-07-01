@@ -59,5 +59,6 @@
                 </div>
               </form>
         </div>
-    </div>    
+    </div>
+</body>
 {include file="footer.tpl"}

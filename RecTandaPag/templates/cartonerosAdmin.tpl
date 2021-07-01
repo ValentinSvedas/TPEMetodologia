@@ -1,13 +1,7 @@
 {include file="header.tpl"}
 <body>
     <div class="container">
-        <div class="mr-2"></div>
-        <nav class="nav">
-          <a class="nav-link" href="administrar/cartoneros">Cartoneros</a>
-          <a class="nav-link" href="administrar/materiales">Materiales</a>
-          <a class="nav-link" href="administrar/pedidos">Pedidos</a>
-          <a class="nav-link" href="home">Home</a>
-        </nav>
+        {include file="adminNav.tpl"}
         <div class="border-bottom m-5">
             <h2>Cartoneros:</h2>
         </div>
@@ -23,6 +17,7 @@
                   <th scope="col">Direccion</th>
                   <th scope="col">Fecha Nacimiento</th>
                   <th scope="col">Espacio disponible</th>
+                  <th scope="col">Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,6 +30,10 @@
                       <td>{$currentItem->direccion}</td>
                       <td>{$currentItem->fecha_nacimiento}</td>
                       <td>{$currentItem->tamanio}</td>
+                      <td>
+                        </span><button type="button" class="btn btn-outline-danger"><a href="delete/{$currentItem->dni}">Borrar</a></button>
+                        <button type="button" class="btn btn-outline-info"><a href="editar/{$currentItem->dni}">Editar</a></button></td>
+                      </td>
                     </tr>
                   {/foreach}
                 {/if}
@@ -43,4 +42,5 @@
           </div>
         </div>
     </div>
+</body>
 {include file="footer.tpl"}

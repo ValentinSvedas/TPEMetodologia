@@ -8,9 +8,9 @@ class PedidoModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
     }
 
-    function AddPedido($id_ciudadano,$tipo_franja_horaria,$tipo_volumen,$imagen_materiales = null){
-        $sentencia = $this->db->prepare("INSERT INTO pedido(id_ciudadano,tipo_franja_horaria,tipo_volumen,imagen_materiales) VALUES(?,?,?,?)");
-        $sentencia->execute(array($id_ciudadano,$tipo_franja_horaria,$tipo_volumen,$imagen_materiales));
+    function AddPedido($nombre,$apellido,$direccion,$telefono,$franjaHoraria,$tipo_volumen,$imagen_materiales = ""){
+        $sentencia = $this->db->prepare("INSERT INTO Pedido(nombre,apellido,direccion,telefono,tipo_franja_horaria,tipo_volumen,imagen_materiales) VALUES(?,?,?,?,?,?,?)");
+        $sentencia->execute(array($nombre,$apellido,$direccion,$telefono,$franjaHoraria,$tipo_volumen,$imagen_materiales));
     }
 
     // function DeletePedido($id_pedido){

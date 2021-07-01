@@ -7,21 +7,14 @@ CREATE TABLE IF NOT EXISTS Cartonero (
     direccion varchar(20) not null,
     fecha_nacimiento date not null,
     tipo_volumen CHAR(1) not null,
-    CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (dni)
-);
-
-CREATE TABLE IF NOT EXISTS Ciudadano (
-    id_ciudadano int not null AUTO_INCREMENT,
-    nombre varchar(20) not null,
-    apellido varchar(20) not null,
-    direccion varchar(20) not null,
-    telefono int not null,
-    CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_ciudadano)
+    CONSTRAINT PK_CARTONERO PRIMARY KEY (dni)
 );
 
 CREATE TABLE IF NOT EXISTS Oferta_Transporte(
     id_oferta_transporte int not null AUTO_INCREMENT,
-    id_ciudadano int not null,
+    nombre varchar(20) not null,
+    direccion varchar(20) not null,
+    telefono int not null,
     tipo_volumen CHAR(1) not null,
     mail varchar(30) not null,
     texto_libre varchar(100) not null,
@@ -29,8 +22,11 @@ CREATE TABLE IF NOT EXISTS Oferta_Transporte(
 );
 
 CREATE TABLE IF NOT EXISTS Pedido(
-    id_ciudadano int not null,
     id_pedido int not null AUTO_INCREMENT,
+    nombre varchar(20) not null,
+    apellido varchar(20) not null,
+    direccion varchar(20) not null,
+    telefono int not null,
     tipo_franja_horaria int not null,
     tipo_volumen CHAR(1) not null,
     imagen_materiales varchar(50) null,
@@ -53,7 +49,22 @@ CREATE TABLE IF NOT EXISTS Materiales(
   id_material int not null AUTO_INCREMENT,
   nombre varchar(20) not null,
   descripcion varchar(300) not null,
-  CONSTRAINT PK_CONSTRUCTOR PRIMARY KEY (id_material)
+  CONSTRAINT PK_MATERIALES PRIMARY KEY (id_material)
+);
+
+CREATE TABLE IF NOT EXISTS Materiales_Acopiados(
+    id_acopio int not null AUTO_INCREMENT,
+    cantidad_acopiado int not null,
+    id_material int not null,
+    id_portador int not null,
+    CONSTRAINT PK_MATERIALES_ACOPIADOS PRIMARY KEY (id_acopio)
+);
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  CONSTRAINT PK_USERS PRIMARY KEY (id)
 );
 
 ALTER TABLE Pedido DROP FOREIGN KEY IF EXISTS FK_PEDIDO_VOLUMEN;
@@ -66,16 +77,6 @@ ALTER TABLE Pedido ADD CONSTRAINT FK_PEDIDO_HORARIO
     FOREIGN KEY (tipo_franja_horaria)
     REFERENCES Horario(id_horario);
 
-ALTER TABLE Pedido DROP FOREIGN KEY IF EXISTS FK_PEDIDO_CIUDADANO;
-ALTER TABLE Pedido ADD CONSTRAINT FK_PEDIDO_CIUDADANO
-    FOREIGN KEY (id_ciudadano)
-    REFERENCES Ciudadano(id_ciudadano);
-
-ALTER TABLE Oferta_Transporte DROP FOREIGN KEY IF EXISTS FK_CIUDADANO_OT;
-ALTER TABLE Oferta_Transporte ADD CONSTRAINT FK_CIUDADANO_OT
-    FOREIGN KEY (id_ciudadano)
-    REFERENCES Ciudadano(id_ciudadano);
-
 ALTER TABLE Oferta_Transporte DROP FOREIGN KEY IF EXISTS FK_VOLUMEN_OT;
 ALTER TABLE Oferta_Transporte ADD CONSTRAINT FK_VOLUMEN_OT
     FOREIGN KEY (tipo_volumen)
@@ -86,7 +87,12 @@ ALTER TABLE Cartonero ADD CONSTRAINT FK_CARTONERO_VOLUMEN
     FOREIGN KEY (tipo_volumen)
     REFERENCES Volumen(id_volumen);
 
-ALTER TABLE Cartonero DROP CONSTRAINT IF EXISTS CT_MATERIAL;
+-- ALTER TABLE Cartonero DROP CONSTRAINT IF EXISTS CT_MATERIAL;
+
+ALTER TABLE Materiales_Acopiados DROP FOREIGN KEY IF EXISTS FK_MATERIALES_ACOPIADOS_CARTONERO;
+ALTER TABLE Materiales_Acopiados ADD CONSTRAINT FK_MATERIALES_ACOPIADOS_CARTONERO
+    FOREIGN KEY (id_portador)
+    REFERENCES Cartonero(dni);
 
 -- Materiales iniciales de la cooperativa
 INSERT INTO Materiales(nombre,descripcion) VALUES ('papel','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
@@ -98,12 +104,28 @@ INSERT INTO Materiales(nombre,descripcion) VALUES ('envases de aluminio','Lorem 
 INSERT INTO Materiales(nombre,descripcion) VALUES ('botellas de vidrio','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
 
 -- Tipos de espacio para el transporte
-INSERT INTO Volumen(id_volumen, tamaño) VALUES ('A','En una caja');
-INSERT INTO Volumen(id_volumen, tamaño) VALUES ('B','En un auto');
-INSERT INTO Volumen(id_volumen, tamaño) VALUES ('C','En una camioneta');
-INSERT INTO Volumen(id_volumen, tamaño) VALUES ('D','En un camion');
+INSERT INTO Volumen(id_volumen, tamanio) VALUES ('A','En una caja');
+INSERT INTO Volumen(id_volumen, tamanio) VALUES ('B','En un auto');
+INSERT INTO Volumen(id_volumen, tamanio) VALUES ('C','En una camioneta');
+INSERT INTO Volumen(id_volumen, tamanio) VALUES ('D','En un camion');
 
 -- Franjas Horarias
 
 INSERT INTO Horario(id_horario,franja_horario) VALUES(1,"9 a 12");
 INSERT INTO Horario(id_horario,franja_horario) VALUES(2,"13 a 17");
+
+-- Cartonero de Prueba
+INSERT INTO Cartonero(dni,nombre,apellido,direccion,fecha_nacimiento,tipo_volumen) VALUES
+(12345678,"Nombre1","Apellido1","Direccion de algo","2007-16-13","A");
+
+-- Vecino BUENA ONDA
+INSERT INTO Cartonero(dni,nombre,apellido,direccion,fecha_nacimiento,tipo_volumen) VALUES
+(00000000,"V Buena","Onda","Direccion de Ciudad","2021-01-01","D");
+
+-- Pedido de Prueba
+INSERT INTO Pedido(nombre,apellido,direccion,telefono,tipo_franja_horaria,tipo_volumen,imagen_materiales) VALUES
+("Nombre1","Apellido1","Direcion de algo 1",4411233,1,"A","");
+
+-- USUARIO administracion cooperativa
+INSERT INTO `users` (`id`, `email`, `password`) VALUES
+(6, 'admin@gmail.com', '$2y$10$SecyWR4GYEgtxZoIzA9Z9u9RqFClBdusWbM6voGAvXWoCJ0HCt3Xa');

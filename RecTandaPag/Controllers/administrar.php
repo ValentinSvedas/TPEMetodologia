@@ -43,8 +43,9 @@ class administrar{
     }
 
     function ShowLoginAdmin(){
-        $this->smarty->display('templates/indexAdmin.tpl');
+        $this->smarty->display('templates/administrar.tpl');
     }
+
     function ShowAdvice(){
         $this->smarty->display('templates/advice.tpl');
     }

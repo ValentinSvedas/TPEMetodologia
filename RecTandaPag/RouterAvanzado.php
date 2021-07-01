@@ -1,6 +1,7 @@
 <?php
     require_once 'Controllers/administrar.php';
     require_once 'Controllers/PedidoController.php';
+    require_once 'Controllers/LoginController.php';
     require_once 'Controllers/MaterialesController.php';
     require_once 'RouterClass.php';
 
@@ -23,7 +24,7 @@
     $r->addRoute("advice", "GET", "administrar", "ShowAdvice");
     $r->addRoute("reciclar", "GET", "administrar", "ShowReciclar");
     $r->addRoute("añadirC", "GET", "administrar", "ShowAñadirCartonero");
-    $r->addRoute("administrar", "GET", "administrar", "getCartoneros");
+    $r->addRoute("administrar", "GET", "administrar", "Showadministrar");
     $r->addRoute("administrar/materiales", "GET", "administrar", "ShowMateriales");
     $r->addRoute("administrar/pedidos", "GET", "administrar", "ShowPedidos");
     $r->addRoute("administrar/nuevoMaterial", "POST", "administrar", "NuevoMaterial");
@@ -47,7 +48,7 @@
     
 
     // Login
-    $r->addRoute("indexAdmin", "POST", "administrar", "ShowLoginAdmin");
+    $r->addRoute("indexAdmin", "POST", "LoginController", "VerifyUser");
     $r->addRoute("admin", "GET","LoginController", "Login");
     $r->addRoute("verifyUser", "POST", "LoginController", "VerifyUser");
     $r->addRoute("logout", "GET", "LoginController", "Logout");
