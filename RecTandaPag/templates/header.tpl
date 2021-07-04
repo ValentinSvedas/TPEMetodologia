@@ -14,9 +14,10 @@
         <a href="index" >Recuperadores urbanos Tandil</a>
     </div>
     <div class="col border-bottom p-3 d-flex flex-row" id="navegador-publico">
-        <a href="aboutus">Sobre nosotros</a>
-        <a href="reciclar">Reciclar</a>
-        <a href="centroacopio">Centro de acopio</a>
+        <a class="nav-link" href="aboutus">Sobre nosotros</a>
+        <a class="nav-link" href="reciclar">Reciclar</a>
+        <a class="nav-link" href="centroacopio">Centro de acopio</a>
+        <a class="nav-link" href="home">Home</a>
     </div>
     </div>
         {if $loged eq true}
