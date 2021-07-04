@@ -94,6 +94,12 @@ ALTER TABLE Materiales_Acopiados ADD CONSTRAINT FK_MATERIALES_ACOPIADOS_CARTONER
     FOREIGN KEY (id_portador)
     REFERENCES Cartonero(dni);
 
+ALTER TABLE Materiales_Acopiados DROP FOREIGN KEY IF EXISTS FK_MATERIALES_ACOPIADOS_MATERIALES;
+ALTER TABLE Materiales_Acopiados ADD CONSTRAINT FK_MATERIALES_ACOPIADOS_MATERIALES
+    FOREIGN KEY (id_material)
+    REFERENCES Materiales(id_material);
+
+
 -- Materiales iniciales de la cooperativa
 INSERT INTO Materiales(nombre,descripcion) VALUES ('papel','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
 INSERT INTO Materiales(nombre,descripcion) VALUES ('cartón','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has');
