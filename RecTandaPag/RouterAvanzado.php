@@ -27,6 +27,7 @@
     $r->addRoute("administrar", "GET", "administrar", "Showadministrar");
     $r->addRoute("administrar/materiales", "GET", "administrar", "ShowMateriales");
     $r->addRoute("administrar/pedidos", "GET", "administrar", "ShowPedidos");
+    $r->addRoute("administrar/acopios", "GET", "administrar", "ShowAcopios");
     $r->addRoute("administrar/nuevoMaterial", "POST", "administrar", "NuevoMaterial");
     $r->addRoute("administrar/borrarMaterial/:id", "GET", "administrar", "BorrarMaterial");
     $r->addRoute("administrar/cartoneros", "GET", "administrar", "ShowCartoneros");
