@@ -7,7 +7,7 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="https://lh3.googleusercontent.com/proxy/3wnki8YOfNblJl555rOnuHZ6K1-HTKEbo7YiwbXr0IZnE0H2UjzPE6tmJpHBJJjTJH0qXD-UyXgMbhHmHKFoiaOWcjTwLSIuwp-_ULKsbtX8k7BhJtIHmKfgjmOCGRtwP1WaoJ1ZTLeq6r_xAh7sXgIE8wwE_JGBpzxHf20OBttx" alt="First slide">
+          <img class="d-block w-100" src="https://www.zaragozarecicla.org/wp-content/uploads/2020/01/las_tres_erres_del_reciclaje.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSGxmMaXZN7DinWCS2_DAcH-xV1AHvS7CCXA&usqp=CAU" alt="Second slide">
