@@ -86,7 +86,7 @@ class administrar{
 
     function ShowAdminLocation(){
         header("Location: ".BASE_URL."administrar");
-     }
+    }
 
 
 }

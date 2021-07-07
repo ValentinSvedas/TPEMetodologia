@@ -11,8 +11,8 @@ class AcopioModel{
     // !!!!! RELIZAR PEDIDO ENTRE TABLAS PARA TRAER TODA LOS DATOS Y NO REFERENCIAS
     function GetAcopios(){
         $sentencia = $this->db->prepare("
-        SELECT * FROM Materiales_Acopiados ma
-        JOIN cartonero c ON ma.id_portador=c.dni
+        SELECT * FROM materiales_acopiados ma
+        JOIN cartonero c ON ma.id_cartonero=c.dni
         ;");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);

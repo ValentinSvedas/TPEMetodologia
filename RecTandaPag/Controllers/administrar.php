@@ -197,5 +197,8 @@ class administrar{
         header("Location: ".BASE_URL."administrar");
      }
 
+    function ShowAboutUs(){
+        $this->smarty->display('templates/aboutus.tpl');
+    }
 
 }

@@ -20,6 +20,7 @@
 
     // rutas
     $r->addRoute("home", "GET", "administrar", "Home");
+    $r->addRoute("aboutus", "GET", "administrar", "ShowAboutUs");
     $r->addRoute("login", "GET", "administrar", "showLogin");
     $r->addRoute("advice", "GET", "administrar", "ShowAdvice");
     $r->addRoute("reciclar", "GET", "administrar", "ShowReciclar");

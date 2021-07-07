@@ -37,7 +37,7 @@
         </li>
       {/foreach}
     </ul>
-  </section<
+  </section>
 </div>
 </body>
 {include file="footer.tpl"}
