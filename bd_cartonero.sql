@@ -205,6 +205,18 @@ INSERT INTO `volumen` (`id_volumen`, `tamanio`) VALUES
 ('C', 'En una camioneta'),
 ('D', 'En un camion');
 
+
+--
+-- Estructura de tabla para la tabla `Materiales_Acopiados`
+--
+
+CREATE TABLE `Materiales_Acopiados`(
+  `id_acopio` int(11) not null,
+  `cantidad_acopiado` int(11) not null,
+  `id_material` int(11) not null,
+  `id_cartonero` int(11) not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
@@ -264,6 +276,15 @@ ALTER TABLE `users`
 ALTER TABLE `volumen`
   ADD PRIMARY KEY (`id_volumen`);
 
+
+--
+-- Indices de la tabla `Materiales_acopiados`
+--
+ALTER TABLE `Materiales_acopiados`
+  ADD PRIMARY KEY (`id_acopio`),
+  ADD KEY `FK_MATERIALES_ACOPIADOS_CARTONERO` (`id_cartonero`),
+  ADD KEY `FK_MATERIALES_ACOPIADOS_MATERIALES` (`id_material`);
+
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
@@ -298,6 +319,13 @@ ALTER TABLE `oferta_transporte`
 ALTER TABLE `pedido`
   MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
+
+--
+-- AUTO_INCREMENT de la tabla `materiales_acopiados`
+--
+ALTER TABLE `materiales_acopiados`
+  MODIFY `id_acopio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -314,6 +342,14 @@ ALTER TABLE `cartonero`
 ALTER TABLE `oferta_transporte`
   ADD CONSTRAINT `FK_CIUDADANO_OT` FOREIGN KEY (`id_ciudadano`) REFERENCES `ciudadano` (`id_ciudadano`),
   ADD CONSTRAINT `FK_VOLUMEN_OT` FOREIGN KEY (`tipo_volumen`) REFERENCES `volumen` (`id_volumen`);
+
+
+--
+-- Filtros para la tabla `materiales_acopiados`
+--
+ALTER TABLE `materiales_acopiados`
+  ADD CONSTRAINT `FK_MATERIALES_ACOPIADOS_CARTONERO` FOREIGN KEY (`id_cartonero`) REFERENCES `cartonero` (`dni`),
+  ADD CONSTRAINT `FK_MATERIALES_ACOPIADOS_MATERIAL` FOREIGN KEY (`id_material`) REFERENCES `materiales` (`id_material`);
 
 --
 -- Filtros para la tabla `pedido`
