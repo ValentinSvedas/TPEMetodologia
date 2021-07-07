@@ -12,6 +12,7 @@ require_once "./Views/MaterialesView.php";
 //Controlladores para casos complejos
 require_once "MaterialesController.php";
 require_once "PedidoController.php";
+require_once "AcopioController.php";
 require_once "./helpers/authHelper.php";
 require_once "./Controllers/LoginController.php";
 require_once "CartoneroController.php";
@@ -180,6 +181,11 @@ class administrar{
     function ShowCartoneros(){
         $control = new CartoneroController();
         $control->showCartonerosAdmin();
+    }
+
+    function ShowAcopios(){
+        $control = new AcopioController();
+        $control->showAcopiosAdmin();
     }
    
     function ShowHomeLocation(){
