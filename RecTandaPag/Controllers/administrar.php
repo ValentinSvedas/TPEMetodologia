@@ -9,16 +9,15 @@ require_once "./Views/PedidoView.php";
 require_once "./php/MaterialesModel.php";
 require_once "./Views/MaterialesView.php";
 
-//Controlladores
+//Controlladores para casos complejos
 require_once "MaterialesController.php";
 require_once "PedidoController.php";
-require_once "AcopioController.php";
-require_once "CartoneroController.php";
 require_once "./helpers/authHelper.php";
 require_once "./Controllers/LoginController.php";
+require_once "CartoneroController.php";
 
 class administrar{
-    
+    //declaracion de variables
     private $db;
     private $smarty;
     private $admin;
@@ -44,9 +43,8 @@ class administrar{
     }
 
     function ShowLoginAdmin(){
-        $this->smarty->display('templates/administrar.tpl');
+        $this->smarty->display('templates/indexAdmin.tpl');
     }
-
     function ShowAdvice(){
         $this->smarty->display('templates/advice.tpl');
     }
@@ -177,11 +175,6 @@ class administrar{
     function ShowPedidos(){
         $control = new PedidoController();
         $control->showPedidosAdmin();
-    }
-
-    function ShowAcopios(){
-        $control = new AcopioController();
-        $control->showAcopiosAdmin();
     }
 
     function ShowCartoneros(){

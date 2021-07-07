@@ -8,9 +8,9 @@ class PedidoModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
     }
 
-    function AddPedido($nombre,$apellido,$direccion,$telefono,$franjaHoraria,$tipo_volumen,$imagen_materiales = ""){
-        $sentencia = $this->db->prepare("INSERT INTO Pedido(nombre,apellido,direccion,telefono,tipo_franja_horaria,tipo_volumen,imagen_materiales) VALUES(?,?,?,?,?,?,?)");
-        $sentencia->execute(array($nombre,$apellido,$direccion,$telefono,$franjaHoraria,$tipo_volumen,$imagen_materiales));
+    function AddPedido($id_ciudadano,$franjaHoraria,$tipo_volumen,$imagen_materiales = "", $id_cartonero=""){
+        $sentencia = $this->db->prepare("INSERT INTO pedido(id_ciudadano,tipo_franja_horaria,tipo_volumen,imagen_materiales,id_cartonero) VALUES(?,?,?,?,?)");
+        $sentencia->execute(array($id_ciudadano,$franjaHoraria,$tipo_volumen,$imagen_materiales, $id_cartonero));
     }
 
     // function DeletePedido($id_pedido){
@@ -26,9 +26,10 @@ class PedidoModel{
     // !!!!! RELIZAR PEDIDO ENTRE TABLAS PARA TRAER TODA LOS DATOS Y NO REFERENCIAS
     function GetPedidos(){
         $sentencia = $this->db->prepare("
-        SELECT p.id_pedido,c.id_ciudadano,h.id_horario,c.nombre,c.apellido,c.direccion,h.franja_horario,v.tamanio FROM pedido p 
+        SELECT p.id_pedido,c.id_ciudadano,h.id_horario,c.nombre,c.apellido,c.direccion,h.franja_horario,v.tamanio,car.dni,p.id_cartonero FROM pedido p 
         JOIN ciudadano c ON c.id_ciudadano = p.id_ciudadano
         JOIN volumen v ON v.id_volumen=p.tipo_volumen
+        Left JOIN cartonero car ON car.dni=p.id_cartonero
         JOIN horario h ON h.id_horario=p.tipo_franja_horaria;");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);

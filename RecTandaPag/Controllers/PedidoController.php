@@ -8,14 +8,17 @@ class PedidoController{
     
     private $db;
     private $model;
+    private $modelCiudadano;
     private $view;
     private $authHelper;
 
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
         $this->model = new PedidoModel();
+        $this->modelCiudadano = new CiudadanoModel();
         $this->view = new PedidoView();
         $this->authHelper = new AuthHelper();
+
     }
     
     function addPedido(){
@@ -29,7 +32,8 @@ class PedidoController{
               $this->view->showError("Formato no aceptado");
           }
       }
-        $this->model->AddPedido($_POST['nombre'],$_POST['apellido'],$_POST['direccion'],$_POST['telefono'],$_POST['franja_horario'],$_POST['volumen'],$filepath);
+        
+        $this->model->AddPedido($this->modelCiudadano->AddCiudadano($_POST['nombre'],$_POST['apellido'],$_POST['direccion'],$_POST['telefono']),$_POST['franja_horario'],$_POST['volumen'],$filepath,null);
         //$this->enviarMailCooperativa();
         $this->view->mostrarResultado();
       } else{

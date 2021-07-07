@@ -16,7 +16,7 @@ class AuthHelper{
         session_destroy();
     }
 
-    public function checkLoggedIn() {
+    public function checkLoggedIn() {// chekea que este logeado
         if (!isset($_SESSION['ID_USER'])) {
             header("Location: ".BASE_URL."home");
             die();
@@ -30,7 +30,7 @@ class AuthHelper{
     }
 
 
-    public function checkUser(){
+    public function checkUser(){ // si es usario, en este caso admin
         if (session_status() != PHP_SESSION_ACTIVE)
         session_start();
         if(isset($_SESSION['ID_USER'])){

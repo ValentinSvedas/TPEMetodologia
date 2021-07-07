@@ -24,6 +24,13 @@ class CartoneroView {
       $this->smarty->display('templates/cartonerosAdmin.tpl');
     }
 
+    public function DisplayCartonerosRecorrido($cartoneros = [], $pedidos = []){
+      $this->smarty->assign('cartoneros',$cartoneros);
+      $this->smarty->assign('pedidos',$pedidos);
+      $this->smarty->display('templates/recorridos.tpl');
+    }
+
+
 }
 
 ?>
