@@ -10,31 +10,32 @@
             <!--id_pedido,id_ciudadano,id_horario vienen en los items para control a futuro-->
             <table class="table">
               <thead>
-                <tr>
-                  <th scope="col">Numero pedido</th>
+                <tr class="table-dark">
+                  <th scope="col">#</th>
                   <th scope="col">Dirección del pedido</th>
-                  <th scope="col">Nombre y apellido del cartonero asignado</th>
+                  <th scope="col">Horario</th>
                 </tr>
-              </thead class="thead-dark">
+              </thead>
               <tbody>
                 {if isset($cartoneros)}
                   {foreach from=$cartoneros item=cartonero}
+                    <tr class="table-active">
+                        <td>Pedidos de {$cartonero->nombre} {$cartonero->apellido}:</td>
+                        <td></td>
+                        <td></td>
                         {foreach from=$pedidos item=pedido}
                         {if $pedido->id_cartonero eq $cartonero->dni}
-                    <tr>
                                 <td >
-                                    {$pedido->id_pedido}
+                                    Numero pedido: {$pedido->id_pedido}
                                 </td>
                                 <td >
                                     {$pedido->direccion}
                                 </td>
+                                <td>{$pedido->franja_horario}</td>
                                 {/if}
-                        {/foreach}
-                        <td></td>
-                        <td></td>
-                        <td>{$cartonero->nombre}
-                        {$cartonero->apellido}</td>
                     </tr>
+                        {/foreach}
+                        
                   {/foreach}
                 {/if}
               </tbody>
