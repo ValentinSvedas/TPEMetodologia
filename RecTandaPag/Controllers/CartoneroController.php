@@ -1,6 +1,7 @@
 <?php
 
 require_once "./php/CartoneroModel.php";
+require_once "./php/PedidoModel.php";
 require_once "./Views/CartoneroView.php";
 require_once "./helpers/authHelper.php";
 
@@ -14,6 +15,8 @@ class CartoneroController{
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=bd_cartonero;charset=utf8', 'root', '');
         $this->model = new CartoneroModel();
+        $this->modelPedido = new PedidoModel();
+        $this->modelCiudadano = new CiudadanoModel();
         $this->view = new CartoneroView();
         $this->authHelper= new authHelper();
     }
@@ -42,6 +45,13 @@ class CartoneroController{
         }else{
           header("Location: ".BASE_URL."home");
         }
+    }
+
+    function ShowCartonerosRecorrido(){
+      $this->authHelper->checkLoggedIn();
+      $cartoneros = $this->model->GetCartoneros();
+      $pedidos = $this->modelPedido->GetPedidos();
+      $this->view->DisplayCartonerosRecorrido($cartoneros, $pedidos);
     }
 
 
