@@ -15,8 +15,10 @@ class CartoneroModel{
     }
 
     function DeleteCartonero($dni){
-        $sentencia = $this->db->prepare("DELETE FROM cartonero WHERE dni=?");
-        $sentencia->execute(array($dni));
+        $sentencia1 = $this->db->prepare("UPDATE pedido SET id_cartonero = NULL WHERE id_cartonero = ?");
+        $sentencia1->execute(array($dni));
+        $sentencia2 = $this->db->prepare("DELETE FROM cartonero WHERE dni=?");
+        $sentencia2->execute(array($dni));
     }   
 
     function UpdateCartonero($nombre,$apellido,$fecha_nacimiento,$dni,$direccion,$tipo_volumen){
@@ -26,7 +28,7 @@ class CartoneroModel{
     function GetCartoneros(){
         $query = $this->db->prepare("
         SELECT c.dni,c.nombre,c.apellido,c.direccion,c.fecha_nacimiento,v.tamanio FROM cartonero c 
-        JOIN volumen v ON v.id_volumen = c.tipo_volumen;");
+        JOIN volumen v ON v.id_volumen = c.tipo_volumen ORDER BY apellido;");
         $query -> execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

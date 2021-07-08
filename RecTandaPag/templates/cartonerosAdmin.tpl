@@ -6,6 +6,10 @@
             <h2>Cartoneros:</h2>
         </div>
         <div class="row">
+          <div><a href="añadirC" class="btn btn-success">Añadir Cartonero</a>
+              <br>
+              <br>
+          </div>
           <div class="col-lg-12">
             <!--id_pedido,id_ciudadano,id_horario vienen en los items para control a futuro-->
             <table class="table table-striped">

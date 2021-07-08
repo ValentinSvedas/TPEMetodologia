@@ -21,7 +21,7 @@ class AuthHelper{
             header("Location: ".BASE_URL."home");
             die();
         } else{
-            if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) { 
+            if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) { 
                 header("Location: ". LOGOUT);
                 die();
             } 

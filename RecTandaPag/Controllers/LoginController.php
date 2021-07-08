@@ -22,7 +22,7 @@ class LoginController{
 
     function Logout(){
         $this->authHelper->logout();
-        header("Location: ".home);
+        header("Location: ".BASE_URL."home");
     }
 
     function VerifyUser(){

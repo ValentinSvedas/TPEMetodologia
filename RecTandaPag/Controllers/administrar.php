@@ -142,7 +142,7 @@ class administrar{
 
     function Edit(){
         $modelCart = new CartoneroModel();
-        $modelCart->updateCartonero($_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_fecha_nacimiento'],$_POST['input_dni'],$_POST['input_direccion'],$_POST['input_tipo']);
+        $modelCart->UpdateCartonero($_POST['input_nombre'],$_POST['input_apellido'],$_POST['input_fecha_nacimiento'],$_POST['input_dni'],$_POST['input_direccion'],$_POST['input_volumen']);
         $this->ShowAdminLocation();
     }
 
