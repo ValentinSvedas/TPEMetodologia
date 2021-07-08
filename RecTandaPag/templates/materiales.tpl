@@ -23,27 +23,33 @@
   </div>
   <!--LISTADO DE MATERIALES CON OPCION DE BORRADO Y EDICION-->
   <div class="row">
-  {if isset($materiales)}
-    {foreach from=$materiales item=currentItem}
-      <div class="row mt-5 d-flex justify-content-between">
-        <div class="col-lg-6">
-          <h2>{$currentItem->nombre}</h2>
-        </div>
-        <div class="col-lg-3">
-          <div class="options d-flex">
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item">
-                <a href="editar/material/{$currentItem->id_material}"><button type="button" class="btn btn-primary">Editar</button></a>
-              </li>
-              <li class="list-group-item">
-                <a href="administrar/borrarMaterial/{$currentItem->id_material}"><button type="button" class="btn btn-danger">Borrar</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    {/foreach}
-  {/if}
+    <div class="col-lg-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {if isset($materiales)}
+            {foreach from=$materiales item=currentItem}
+              <tr>
+                <td>{$currentItem->id_material}</td>
+                <td>{$currentItem->nombre}</td>
+                <td>{$currentItem->descripcion}</td>
+                <td>
+                  <a href="editar/material/{$currentItem->id_material}"><button type="button" class="btn btn-primary mr-1">Editar</button></a>
+                  <a href="administrar/borrarMaterial/{$currentItem->id_material}"><button type="button" class="btn btn-danger">Borrar</button></a>
+                <td>
+              </tr>
+            {/foreach}
+          {/if}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 </body>

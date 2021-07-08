@@ -46,3 +46,8 @@ body .container{
 #nav-admin a:hover {
     color: blue;
 }
+
+#material-box{
+    width: 150px;
+    height: 250px;
+}
