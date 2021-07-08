@@ -23,19 +23,20 @@
                         <td>Pedidos de {$cartonero->nombre} {$cartonero->apellido}:</td>
                         <td></td>
                         <td></td>
-                        {foreach from=$pedidos item=pedido}
-                        {if $pedido->id_cartonero eq $cartonero->dni}
-                                <td >
-                                    Numero pedido: {$pedido->id_pedido}
-                                </td>
-                                <td >
-                                    {$pedido->direccion}
-                                </td>
-                                <td>{$pedido->franja_horario}</td>
-                                {/if}
                     </tr>
-                        {/foreach}
-                        
+                    {foreach from=$pedidos item=pedido}
+                    {if $pedido->id_cartonero eq $cartonero->dni}
+                      <tr>
+                        <td >
+                            Numero pedido: {$pedido->id_pedido}
+                        </td>
+                        <td >
+                            {$pedido->direccion}
+                        </td>
+                        <td>{$pedido->franja_horario}</td>
+                        {/if}
+                      </tr>
+                    {/foreach}
                   {/foreach}
                 {/if}
               </tbody>
