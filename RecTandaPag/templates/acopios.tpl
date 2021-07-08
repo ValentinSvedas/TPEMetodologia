@@ -24,7 +24,7 @@
                         <td>{$currentItem->dni}</td>
                         <td>{$currentItem->apellido}</td>
                         <td>{$currentItem->id_material}</td>
-                        <td>{$currentItem->cantidad_acopiado}</td>
+                        <td>{$currentItem->cantidad_acopiado} Kg</td>
                       </tr>
                     {/foreach}
                   {/if}
